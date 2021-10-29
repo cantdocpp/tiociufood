@@ -25,6 +25,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install -g serverless
       - run: npm install
+      - run: echo my secret is ${{ secrets.AWS_ACCESS_KEY_ID }}
       - run: serverless config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - run: serverless deploy
         env:
