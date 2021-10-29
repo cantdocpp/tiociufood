@@ -4,7 +4,7 @@ provider:
   name: aws
   runtime: nodejs12.x
   region: us-east-2
-  stage: ${opt::stage, 'dev'}
+  stage: ${opt:stage, 'dev'}
   timeout: 3
   iam:
     role:
