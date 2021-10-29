@@ -12,6 +12,7 @@ module.exports = {
     add: async (event) => {
         const { email, password } = event
         const hashedPassword = await bcrypt.hash(password, 10)
+        
         try {
             await docClient.put({
                 TableName: 'adminTable',
