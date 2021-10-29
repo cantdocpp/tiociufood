@@ -53,7 +53,7 @@ module.exports = {
 
         // for staging
         const data = JSON.parse(event.body)
-        const { email, password } = JSON.parse(event.body)
+        const { email, password } = data
 
         try {
             const adminSearchResult = await docClient.query({
