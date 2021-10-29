@@ -6,6 +6,13 @@ provider:
   region: us-east-2
   stage: ${opt::stage, 'dev'}
   timeout: 3
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - dynamodb:PutItem
+          Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/*"
 
 functions:
   addAdmin:
@@ -13,5 +20,5 @@ functions:
     events:
       - http:
           path: /api/v1/admin/add
-          method: get
+          method: post
           cors: true

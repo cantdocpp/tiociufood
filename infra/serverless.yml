@@ -16,6 +16,8 @@ resources:
         AttributeDefinitions:
           - AttributeName: email
             AttributeType: S
+          - AttributeName: password
+            AttributeType: S
         KeySchema:
           - AttributeName: email
             KeyType: HASH

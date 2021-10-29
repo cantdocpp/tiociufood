@@ -12,6 +12,10 @@
   "author": "cantdocpp",
   "license": "ISC",
   "devDependencies": {
+    "aws-sdk": "^2.1017.0",
     "serverless": "^2.64.1"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1"
   }
 }
