@@ -9,16 +9,13 @@ const docClient = new AWS.DynamoDB.DocumentClient({
 
 module.exports = {
     add: async (event) => {
-        console.log(event.body, '__________________-')
-        const { email, password } = event.body
-        console.log(email, '<<<<<<<<<<<<<<<< email')
-        const hashedPassword = await bcrypt.hash(password, 10)
+        const hashedPassword = await bcrypt.hash(event.body.password, 10)
 
         try {
             await docClient.put({
                 TableName: 'adminTable',
                 Item: {
-                    "email": email,
+                    "email": event.body.email,
                     "password": hashedPassword
                 }
             }).promise()
