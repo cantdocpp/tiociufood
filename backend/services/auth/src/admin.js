@@ -21,7 +21,7 @@ module.exports = {
                 }
             }).promise()
             return {
-                status: 200,
+                statusCode: 200,
                 headers: {
                     "Access-Control-Allow-Headers": "Content-Type",
                     "Access-Control-Allow-Origin": "*",
@@ -33,7 +33,7 @@ module.exports = {
             }
         } catch(err) {
             return {
-                status: 500,
+                statusCode: 500,
                 headers: {
                     "Access-Control-Allow-Headers": "Content-Type",
                     "Access-Control-Allow-Origin": "*",
