@@ -66,8 +66,6 @@ module.exports = {
                     ':email': email
                 }
             }).promise()
-
-            console.log(adminSearchResult)
             
             if (!adminSearchResult.Items) {
                 return {
