@@ -17,6 +17,9 @@ provider:
 functions:
   addAdmin:
     handler: src/admin.add
+    package:
+      include:
+        - ../utils/
     events:
       - http:
           path: /api/v1/admin/add
