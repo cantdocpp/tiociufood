@@ -123,7 +123,8 @@ module.exports = {
                     "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
                 },
                 body: JSON.stringify({
-                    message: 'Something is wrong on the server'
+                    message: 'Something is wrong on the server',
+                    debug: err
                 })
             }
         }
