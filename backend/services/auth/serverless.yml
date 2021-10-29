@@ -1,4 +1,4 @@
-services: auth
+service: auth
 
 provider:
   name: aws
@@ -6,3 +6,12 @@ provider:
   region: us-east-2
   stage: ${opt::stage, 'dev'}
   timeout: 3
+
+functions:
+  addAdmin:
+    handler: src/admin.add
+    events:
+      - http:
+          path: /api/v1/admin/add
+          method: get
+          cors: true
