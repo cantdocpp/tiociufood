@@ -9,6 +9,7 @@ const docClient = new AWS.DynamoDB.DocumentClient({
 
 module.exports = {
     add: async (event) => {
+        console.log(event, '+++++++++++++++++++++++=')
         const { email, password } = event
         const hashedPassword = await bcrypt.hash(password, 10)
 
