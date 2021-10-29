@@ -11,6 +11,7 @@ module.exports = {
     add: async (event) => {
         console.log(event.body, '__________________-')
         const { email, password } = event.body
+        console.log(email, '<<<<<<<<<<<<<<<< email')
         const hashedPassword = await bcrypt.hash(password, 10)
 
         try {
