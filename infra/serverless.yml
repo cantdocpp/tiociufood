@@ -1,0 +1,22 @@
+service: tiociufood-operations
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-2
+  stage: ${opt:stage, 'dev'}
+  timeout: 15
+
+resources:
+  Resources:
+    adminTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: adminTable
+        AttributeDefinitions:
+          - AttributeName: email
+            AttributeType: S
+        KeySchema:
+          - AttributeName: email
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
