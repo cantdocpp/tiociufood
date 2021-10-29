@@ -19,7 +19,7 @@ functions:
     handler: src/admin.add
     package:
       include:
-        - ../utils/
+        - ../utils
     events:
       - http:
           path: /api/v1/admin/add
