@@ -5,7 +5,7 @@ provider:
   runtime: nodejs12.x
   region: us-east-2
   stage: ${opt:stage, 'dev'}
-  timeout: 5
+  timeout: 15
 
 resources:
   Resources:
