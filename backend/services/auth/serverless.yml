@@ -14,6 +14,9 @@ provider:
             - dynamodb:PutItem
           Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/*"
 
+package:
+  individually: true
+
 functions:
   addAdmin:
     handler: src/admin.add
