@@ -21,14 +21,29 @@ module.exports = {
                     "password": hashedPassword
                 }
             }).promise()
-            return response(200, {
-                message: 'Add admin success'
-            })
+            return {
+                status: 200,
+                headers: {
+                    "Access-Control-Allow-Headers": "Content-Type",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+                },
+                body: JSON.stringify({
+                    message: 'success add admin'
+                })
+            }
         } catch(err) {
-            return response(500, {
-                message: 'Something wrong on the server',
-                debug: err
-            })
+            return {
+                status: 500,
+                headers: {
+                    "Access-Control-Allow-Headers": "Content-Type",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+                },
+                body: JSON.stringify({
+                    message: err
+                })
+            }
         }
     }
 }
