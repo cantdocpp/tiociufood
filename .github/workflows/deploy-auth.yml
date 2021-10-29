@@ -4,7 +4,7 @@ on:
   push:
     braches: [ $default-branch ]
     paths:
-      - backend/services/auth
+      - backend/services/auth/**
 
 defaults:
   run:
