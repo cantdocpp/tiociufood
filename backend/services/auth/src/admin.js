@@ -2,7 +2,6 @@
 
 const AWS = require('aws-sdk')
 const bcrypt = require('bcrypt');
-const { response } = require('../../../utils/response')
 
 const docClient = new AWS.DynamoDB.DocumentClient({
     region: 'us-east-2'
