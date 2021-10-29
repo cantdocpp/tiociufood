@@ -102,14 +102,14 @@ module.exports = {
             }
 
             return {
-                statusCode: 500,
+                statusCode: 401,
                 headers: {
                     "Access-Control-Allow-Headers": "Content-Type",
                     "Access-Control-Allow-Origin": "*",
                     "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
                 },
                 body: JSON.stringify({
-                    message: 'AUTH ERROR: Something is wrong on the server'
+                    message: 'username or password is wrong'
                 })
             }
         } catch(err) {
