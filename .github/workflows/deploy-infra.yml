@@ -3,6 +3,8 @@ name: Infrastructure Deployment
 on:
   push:
     braches: [ $default-branch ]
+    paths:
+      - infra/**
 
 defaults:
   run:
