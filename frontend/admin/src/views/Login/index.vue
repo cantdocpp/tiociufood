@@ -1,5 +1,6 @@
 <template>
     <div>
+        <span v-if="error">username or password wrong</span>
         <form @submit.prevent="login">
           <label for="email">
             Email:
@@ -23,7 +24,8 @@ export default {
     data() {
         return {
             email: '',
-            password: ''
+            password: '',
+            error: false
         }
     },
     methods: {
@@ -33,7 +35,14 @@ export default {
               email: this.email,
               password: this.password
             })
-            .then(() => { this.$router.push({ name: 'Home' }) })
+            .then(res => {
+              console.log(res, '++++++++++++++++++')
+              if (res.status === 401) {
+                this.error = true
+                return
+              }
+              this.$router.push({ name: 'Home' }) 
+            })
         }
     },
 }
