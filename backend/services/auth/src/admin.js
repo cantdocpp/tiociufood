@@ -89,7 +89,7 @@ module.exports = {
                 const token = jwt.sign(adminObj, 'tiociufood')
                 
                 return {
-                    statusCode: 401,
+                    statusCode: 200,
                     headers: {
                         "Access-Control-Allow-Headers": "Content-Type",
                         "Access-Control-Allow-Origin": "*",
