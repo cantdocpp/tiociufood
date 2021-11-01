@@ -41,6 +41,10 @@ router.beforeEach((to, from, next) => {
   if (to.meta.needAuth && !isLoggedIn) {
     next({ name: 'Login' })
   }
+
+  if (!to.meta.needAuth && isLoggedIn) {
+    next({ name: 'Home' })
+  }
   next()
 })
 
