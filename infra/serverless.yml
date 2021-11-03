@@ -22,3 +22,34 @@ resources:
           - AttributeName: email
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
+    tiociufoodTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: tiociufoodTable
+        AttributeDefinitions:
+          - AttributeName: pk
+            AttributeType: S
+          - AttributeName: sk
+            AttributeType: S
+          - AttributeName: restaurantName
+            AttributeType: S
+          - AttributeName: restaurantAddress
+            AttributeType: S
+          - AttributeName: restaurantImages
+            AttributeType: SS
+          - AttributeName: restaurantDescription
+            AttributeType: S
+          - AttributeName: foodName
+            AttributeType: S
+          - AttributeName: foodprice
+            AttributeType: N
+          - AttributeName: foodImage
+            AttributeType: SS
+          - AttributeName: foodDescription
+            AttributeType: S
+        KeySchema:
+          - AttributeName: pk
+            KeyType: HASH
+          - AttributeName: sk
+            KeyType: RANGE
+        BillingMode: PAY_PER_REQUEST
