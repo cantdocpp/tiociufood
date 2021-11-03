@@ -1,0 +1,17 @@
+service: restaurant
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-2
+  stage: ${opt:stage, 'dev'}
+  timeout: 3
+
+functions:
+  getRestaurant:
+    handler: handler.hello
+    events:
+      - http:
+          path: /api/v1/restaurant
+          method: get
+          cors: true
