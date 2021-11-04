@@ -18,7 +18,7 @@ module.exports = {
 
     try {
       await docClient.put({
-        TableName: tiociufoodTable,
+        TableName: 'tiociufoodTable',
         Item: {
           pk: `RESTAURANT#${name}`,
           sk: `RESTAURANT#${name}`,
