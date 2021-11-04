@@ -18,7 +18,7 @@ module.exports = {
 
     try {
       await docClient.put({
-        TableName: 'tiociufoodTable',
+        TableName: 'mainTable',
         Item: {
           identifier: `RESTAURANT#${name}`,
           sk: `RESTAURANT#${name}`,
@@ -63,7 +63,7 @@ module.exports = {
 
     try {
       const restaurantSearchResult = await docClient.query({
-        TableName: 'tiociufoodTable',
+        TableName: 'mainTable',
         IndexName: 'pk',
         KeyConditionExpression: '#pk = :pk',
         ExpressionAttributeNames: {
