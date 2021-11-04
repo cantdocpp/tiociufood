@@ -12,6 +12,7 @@
   "author": "cantdocpp",
   "license": "ISC",
   "devDependencies": {
+    "aws-sdk": "^2.1021.0",
     "serverless": "^2.64.1"
   }
 }

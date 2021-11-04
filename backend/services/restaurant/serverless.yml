@@ -9,9 +9,9 @@ provider:
 
 functions:
   getRestaurant:
-    handler: handler.hello
+    handler: src/restaurant.addRestaurant
     events:
       - http:
-          path: /api/v1/restaurant
-          method: get
+          path: /api/v1/restaurant/add
+          method: post
           cors: true
