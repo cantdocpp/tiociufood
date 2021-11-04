@@ -32,7 +32,7 @@ resources:
           - AttributeName: sk
             AttributeType: S
         KeySchema:
-          - AttributeName: pk
+          - AttributeName: identifier
             KeyType: HASH
           - AttributeName: sk
             KeyType: RANGE
