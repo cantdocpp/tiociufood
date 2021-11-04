@@ -8,7 +8,7 @@ provider:
   timeout: 3
 
 functions:
-  getRestaurant:
+  addRestaurant:
     handler: src/restaurant.addRestaurant
     events:
       - http:
