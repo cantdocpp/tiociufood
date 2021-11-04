@@ -54,23 +54,16 @@ module.exports = {
     }
   },
   getRestaurant: async (event) => {
-    // for dev
-    // const { restaurantName } = event
-
-    // for staging
-    // const data = JSON.parse(event.body)
-    // const { restaurantName } = data
-
     try {
-      const restaurantSearchResult = await docClient.query({
+      const restaurantSearchResult = await docClient.scan({
         TableName: 'mainTable',
-        IndexName: 'pk',
-        KeyConditionExpression: '#pk = :pk',
+        FilterExpression: 'begins_with(#identifier, :identifier)',
+        ProjectionExpression: 'identifier',
         ExpressionAttributeNames: {
-            '#pk': 'pk'
+            '#identifier': 'identifier'
         },
         ExpressionAttributeValues: {
-            ':pk': `RESTAURANT`
+            ':identifier': 'RESTAURANT'
         }
       }).promise()
       return {
@@ -82,7 +75,7 @@ module.exports = {
         },
         body: JSON.stringify({
             message: 'success get restaurant',
-            restaurants: restaurantSearchResult
+            restaurantData: restaurantSearchResult.Items
         })
       }
     } catch(err) {
