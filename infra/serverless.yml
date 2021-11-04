@@ -25,7 +25,7 @@ resources:
     tiociufoodTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: tiociufoodTable
+        TableName: mainTable
         AttributeDefinitions:
           - AttributeName: identifier
             AttributeType: S
