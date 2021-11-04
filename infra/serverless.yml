@@ -27,7 +27,7 @@ resources:
       Properties:
         TableName: tiociufoodTable
         AttributeDefinitions:
-          - AttributeName: pk
+          - AttributeName: identifier
             AttributeType: S
           - AttributeName: sk
             AttributeType: S
