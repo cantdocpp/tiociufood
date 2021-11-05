@@ -1,15 +1,18 @@
 <template>
-  <div id="nav" v-if="loggedIn">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div id="app">
+    <Navbar v-if="loggedIn" />
+    <router-view />
   </div>
-  <router-view />
 </template>
 
 <script>
 import { authComputed } from './utils/helper'
+import Navbar from './components/Navbar'
 
 export default {
+  components: {
+    Navbar
+  },
   computed: {
     ...authComputed
   }
