@@ -11,9 +11,6 @@ const docClient = new AWS.DynamoDB.DocumentClient({
 // Create S3 service object
 const s3 = new AWS.S3({
   apiVersion: '2006-03-01',
-  params: {
-    Bucket: 'tiociufood'
-  }
 })
 
 
@@ -26,11 +23,14 @@ module.exports = {
     const data = JSON.parse(event.body)
     const { restaurantName, restaurantAddress, restaurantDescription, restaurantImage } = data
 
+    const params = {
+      Bucket: 'tiociufood',
+      Key: restaurantImage[0].name,
+      Body: restaurantImage[0]
+    }
+
     try {
-      const image = await s3.putObject({
-        key: restaurantImage[0].name,
-        body: restaurantImage[0]
-      }).promise()
+      const image = await s3.putObject(params).promise()
       return {
         statusCode: 200,
         headers: {
