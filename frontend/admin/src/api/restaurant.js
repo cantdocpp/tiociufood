@@ -23,14 +23,14 @@ const add_restaurant = (data) => {
 
     console.log(data.restaurantImage, '__________________')
 
-//     return axios
-//             .post(url, data)
-//             .then(res => {
-//                 console.log(res)
-//             })
-//             .catch(err => {
-//                 console.log(err.response)
-//             })
+    return axios
+            .post(url, data)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err.response)
+            })
 }
 
 export {

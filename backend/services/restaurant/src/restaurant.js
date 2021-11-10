@@ -30,7 +30,7 @@ module.exports = {
       const image = await s3.putObject({
         key: restaurantImage[0].name,
         body: restaurantImage[0]
-      })
+      }).promise()
       return {
         statusCode: 200,
         headers: {
