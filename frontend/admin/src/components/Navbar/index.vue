@@ -2,7 +2,10 @@
     <Container>
         <Box>
             <Link to="food">Makanan</Link>
-            <Spacer :x="10" />
+            <Spacer 
+                display="inline"
+                :x="10" 
+            />
             <Link to="restaurant">Restoran</Link>
         </Box>
     </Container>

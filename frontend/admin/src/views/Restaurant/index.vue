@@ -1,8 +1,16 @@
 <template>
     <Container>
+        <Add 
+            v-if="isAdd"
+            @close="closeAddModal"
+        />
         <Spacer :y="50" />
         <Loading v-if="isLoading" />
         <Box v-if="!isLoading">
+            <Flex justify="flex-end">
+                <Button @click="openModal">Add Restaurant</Button>
+            </Flex>
+            <Spacer :y="70" />
             <Table 
                 :headers="tableList"
                 :data="tableData"
@@ -18,6 +26,9 @@ import Box from '@/components/Box'
 import Spacer from '@/components/Spacer'
 import Table from '@/components/Table'
 import Loading from '@/components/Loading'
+import Flex from '@/components/Flex'
+import Button from '@/components/Button'
+import Add from './components/add'
 
 import { get_restaurant } from '@/api/restaurant'
 
@@ -26,12 +37,20 @@ export default {
         return {
             isLoading: true,
             tableList: ['Restaurant name', 'Restaurant address', 'Restaurant description'],
-            tableData: []
+            tableData: [],
+            isAdd: false
+        }
+    },
+    methods: {
+        openModal() {
+            this.isAdd = true
+        },
+        closeAddModal() {
+            this.isAdd = false
         }
     },
     async created() {
         const tableData = await get_restaurant()
-        console.log(tableData)
         this.tableData = tableData
         this.isLoading = false
     },
@@ -40,7 +59,10 @@ export default {
         Box,
         Spacer,
         Table,
-        Loading
+        Loading,
+        Flex,
+        Button,
+        Add
     }
 }
 </script>
