@@ -44,7 +44,7 @@ resources:
     TiociufoodBucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: !Ref ${self:custom.bucket}
+        BucketName: !Ref '${self:custom.bucket}'
         AccessControl: PublicRead
         CorsConfiguration:
           CorsRules:
