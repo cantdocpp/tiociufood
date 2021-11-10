@@ -21,14 +21,16 @@ const get_restaurant = () => {
 const add_restaurant = (data) => {
     const url = endpoint + '/add'
 
-    return axios
-            .post(url, data)
-            .then(res => {
-                console.log(res)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+    console.log(data.restaurantImage, '__________________')
+
+//     return axios
+//             .post(url, data)
+//             .then(res => {
+//                 console.log(res)
+//             })
+//             .catch(err => {
+//                 console.log(err.response)
+//             })
 }
 
 export {
