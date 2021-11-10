@@ -1,5 +1,9 @@
 service: tiociufood-operations
 
+custom:
+  bucket: tiociufood
+  uploadBucket: ${self:custom.bucket}-uploads
+
 provider:
   name: aws
   runtime: nodejs12.x
@@ -37,3 +41,13 @@ resources:
           - AttributeName: sk
             KeyType: RANGE
         BillingMode: PAY_PER_REQUEST
+    TiociufoodBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self.custom.bucket}
+        AccessControl: PublicRead
+        CorsConfiguration:
+          CorsRules:
+            - AllowedHeaders: ['*']
+              AllowedMethods: ['PUT']
+              AllowedOrigins: ['*']
