@@ -27,12 +27,34 @@ module.exports = {
     const { restaurantName, restaurantAddress, restaurantDescription, restaurantImage } = data
 
     try {
-      await s3.putObject({
+      const image = await s3.putObject({
         key: restaurantImage.name,
         body: restaurantImage
       })
+      return {
+        statusCode: 200,
+        headers: {
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+        },
+        body: JSON.stringify({
+            message: 'success add image',
+            image: image
+        })
+      }
     } catch(err) {
-      console.log(err)
+      return {
+        statusCode: 400,
+        headers: {
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+        },
+        body: JSON.stringify({
+            error: err
+        })
+      }
     }
 
     try {

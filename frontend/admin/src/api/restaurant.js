@@ -18,6 +18,20 @@ const get_restaurant = () => {
             })
 }
 
+const add_restaurant = (data) => {
+    const url = endpoint + '/add'
+
+    return axios
+            .post(url, data)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+}
+
 export {
-    get_restaurant
+    get_restaurant,
+    add_restaurant
 }

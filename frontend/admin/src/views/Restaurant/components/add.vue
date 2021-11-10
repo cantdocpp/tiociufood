@@ -28,7 +28,7 @@
                 <Spacer :y="20" />
                 <Box>
                     <Flex justify="flex-end">
-                        <Button max-width>
+                        <Button max-width @click="submit">
                             Submit
                         </Button>
                     </Flex>
@@ -51,6 +51,8 @@ import TextField from '@/components/TextField'
 import FileInput from '@/components/FileInput'
 import Button from '@/components/Button'
 
+import { add_restaurant } from '@/api/restaurant'
+
 export default {
     data() {
         return {
@@ -66,7 +68,9 @@ export default {
         handleUpload(event) {
             console.log(...event.target.files)
             this.form.restaurantImage = [...event.target.files]
-            
+        },
+        async submit() {
+            await add_restaurant(this.form)
         }
     },
     components: {
