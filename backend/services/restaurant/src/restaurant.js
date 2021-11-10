@@ -2,8 +2,18 @@
 
 const AWS = require('aws-sdk')
 
+AWS.config.update({region: 'us-east-2'});
+
 const docClient = new AWS.DynamoDB.DocumentClient({
   region: 'us-east-2'
+})
+
+// Create S3 service object
+const s3 = new AWS.S3({
+  apiVersion: '2006-03-01',
+  params: {
+    Bucket: 'tiociufood'
+  }
 })
 
 
@@ -14,17 +24,26 @@ module.exports = {
 
     // for staging
     const data = JSON.parse(event.body)
-    const { name, address, description } = data
+    const { restaurantName, restaurantAddress, restaurantDescription, restaurantImage } = data
+
+    try {
+      await s3.putObject({
+        key: restaurantImage.name,
+        body: restaurantImage
+      })
+    } catch(err) {
+      console.log(err)
+    }
 
     try {
       await docClient.put({
         TableName: 'mainTable',
         Item: {
-          identifier: `RESTAURANT#${name}`,
-          sk: `RESTAURANT#${name}`,
-          restaurantName: name,
-          restaurantAddress: address,
-          restaurantDescription: description
+          identifier: `RESTAURANT#${restaurantName}`,
+          sk: `RESTAURANT#${restaurantName}`,
+          restaurantName: restaurantName,
+          restaurantAddress: restaurantAddress,
+          restaurantDescription: restaurantDescription
         }
       }).promise()
       return {
