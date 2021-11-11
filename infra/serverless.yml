@@ -48,9 +48,15 @@ resources:
         AccessControl: PublicRead
         CorsConfiguration:
           CorsRules:
-            - AllowedHeaders: ['*']
-              AllowedMethods: ['PUT']
-              AllowedOrigins: ['*']
+            - AllowedMethods:
+                - PUT
+                - GET
+                - POST
+                - HEAD
+              AllowedOrigins:
+                - "*"
+              AllowedHeaders:
+                - "*"
     TiociufoodBucketPolicy:
       Type: AWS::S3::BucketPolicy
       Properties:
@@ -66,13 +72,4 @@ resources:
                 - "s3:GetObject"
                 - "s3:ListBucket"
                 - "s3:PutObject"
-              Resource:
-                Fn::Join: [
-                  "", [
-                    "arn:aws:s3:::",
-                    {
-                      "Ref": "TiociufoodBucket"
-                    },
-                    "/*"
-                  ]
-                ]
+              Resource: arn:aws:s3:::${self:custom.bucket}/*
