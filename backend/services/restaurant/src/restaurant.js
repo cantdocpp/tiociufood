@@ -25,6 +25,7 @@ module.exports = {
 
     const params = {
       Bucket: 'tiociufood',
+      acl: 'public-read',
       Key: restaurantImageName,
       Body: restaurantImage
     }
