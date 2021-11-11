@@ -66,4 +66,13 @@ resources:
                 - "s3:GetObject"
                 - "s3:ListBucket"
                 - "s3:PutObject"
-              Resource: "arn:aws:s3:::${self:custom.bucket}/*"
+              Resource:
+                Fn::Join: [
+                  "", [
+                    "arn:aws:s3:::",
+                    {
+                      "Ref": "TiociufoodBucket"
+                    },
+                    "/*"
+                  ]
+                ]
