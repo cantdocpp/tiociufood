@@ -27,7 +27,8 @@ module.exports = {
       Bucket: 'tiociufood',
       Key: restaurantImageName,
       Body: restaurantImage,
-      ContentType: 'image/jpeg'
+      ContentType: 'image/jpeg',
+      ContentEncoding: 'base64'
     }
 
     try {

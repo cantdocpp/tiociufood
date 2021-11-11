@@ -3,7 +3,7 @@
         header-text="add restaurant"
         v-bind="$attrs"
     >
-        <Form>
+        <Form @submit="submit">
             <Stack>
                 <Label name="restaurant name">
                     <Input
@@ -28,7 +28,7 @@
                 <Spacer :y="20" />
                 <Box>
                     <Flex justify="flex-end">
-                        <Button max-width @click="submit">
+                        <Button max-width>
                             Submit
                         </Button>
                     </Flex>
