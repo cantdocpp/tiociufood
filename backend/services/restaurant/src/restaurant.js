@@ -21,11 +21,11 @@ module.exports = {
 
     // for staging
     const data = JSON.parse(event.body)
-    const { restaurantName, restaurantAddress, restaurantDescription, restaurantImage } = data
+    const { restaurantName, restaurantAddress, restaurantDescription, restaurantImageName, restaurantImage } = data
 
     const params = {
       Bucket: 'tiociufood',
-      Key: restaurantImage.name,
+      Key: restaurantImageName,
       Body: restaurantImage
     }
 

@@ -60,6 +60,7 @@ export default {
                 restaurantName: '',
                 restaurantAddress: '',
                 restaurantDescription: '',
+                restaurantImageName: '',
                 restaurantImage: []
             }
         }
@@ -67,13 +68,13 @@ export default {
     methods: {
         handleUpload(event) {
             const file = event.target.files[0]
-            console.log(file.name)
 
             const reader = new FileReader();
             reader.onload = e => {
                 const url = e.target.result;
                 
                 this.form.restaurantImage = url
+                this.form.restaurantImageName = file.name
             }
 
             reader.readAsDataURL(file)
