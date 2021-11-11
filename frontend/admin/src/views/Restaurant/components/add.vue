@@ -66,7 +66,17 @@ export default {
     },
     methods: {
         handleUpload(event) {
-            console.log(...event.target.files)
+            const file = event.target.files[0]
+            console.log(file.name)
+
+            const reader = new FileReader();
+            reader.onload = e => {
+                const url = e.target.result;
+                
+                this.form.restaurantImage = url
+            }
+
+            reader.readAsDataURL(file)
             this.form.restaurantImage = [...event.target.files]
         },
         async submit() {
