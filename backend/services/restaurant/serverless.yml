@@ -19,9 +19,7 @@ provider:
           Action:
             - s3:PutObject
             - s3:GetObject
-          Resource: 
-            - "arn:aws:s3:::tiociufood/*"
-            - "arn:aws:s3:::tiociufood"
+          Resource: "arn:aws:s3:::tiociufood/*"
 
 functions:
   addRestaurant:
