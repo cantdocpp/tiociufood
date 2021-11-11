@@ -10,7 +10,6 @@ provider:
     role:
       statements:
         - Effect: "Allow"
-          Principal: "*"
           Action:
             - dynamodb:PutItem
             - dynamodb:Query
