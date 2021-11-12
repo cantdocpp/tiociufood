@@ -68,6 +68,7 @@ export default {
     methods: {
         handleUpload(event) {
             const file = event.target.files[0]
+            console.log(file)
 
             const reader = new FileReader();
             reader.onload = e => {
@@ -81,6 +82,8 @@ export default {
             this.form.restaurantImage = [...event.target.files]
         },
         async submit() {
+            const restaurantImageSplit = this.form.restaurantImage.split(';')
+            this.form.restaurantImage = restaurantImageSplit[1]
             await add_restaurant(this.form)
         }
     },

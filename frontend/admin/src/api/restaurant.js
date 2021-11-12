@@ -21,7 +21,7 @@ const get_restaurant = () => {
 const add_restaurant = (data) => {
     const url = endpoint + '/add'
 
-    console.log(data.restaurantImage, '__________________')
+    // console.log(data.restaurantImage, '__________________')
 
     return axios
             .post(url, data)
