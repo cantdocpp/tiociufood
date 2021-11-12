@@ -13,9 +13,13 @@ const JPEG_MIME_TYPE = "image/jpeg"
 const JPG_MIME_TYPE = "image/jpg"
 const MIME_TYPES = [PNG_MIME_TYPE, JPEG_MIME_TYPE, JPG_MIME_TYPE]
 
-const getErrorMessage = message => ({ statusCode: 500, body: JSON.stringify( message })})
-
-const isAllowedFile = (size, mimeType) => { // some validation code }
+const isAllowedFile = (size, mimeType) => {
+    if (size < MAX_SIZE && !mimeType.includes(MIME_TYPES)) {
+        return true
+    } else {
+        return false
+    }
+}
 
 const uploadToS3 = (bucket, key, buffer, mimeType) => {
     new Promise((resolve, reject) => {
@@ -70,8 +74,8 @@ module.exports.handler = async event => {
                 originalUrl: signedOriginalUrl,
                 thumbnailUrl: signedThumbnailUrl,
                 originalSize: file.content.byteLength
-             })
-          }
+            })
+        }
     } catch (e) {
         return {
             statusCode: 401,
