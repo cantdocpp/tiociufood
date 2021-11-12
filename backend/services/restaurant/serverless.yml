@@ -8,7 +8,7 @@ provider:
   timeout: 15
   apiGateway:
     binaryMediaTypes:
-      - '*/*'
+      - "*/*"
   iam:
     role:
       statements:
@@ -48,3 +48,6 @@ functions:
           path: /api/v1/testupload
           method: post
           cors: true
+
+plugins:
+  - serverless-offline

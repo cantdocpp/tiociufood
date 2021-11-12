@@ -5,6 +5,7 @@ const { v4: uuidv4 } = require("uuid")
 const Jimp = require("jimp")
 const s3 = new AWS.S3()
 const Busboy = require('busboy');
+const multiparty = require('multiparty');
 
 const bucket = 'tiociufood'
 const MAX_SIZE = 40000000 // 4MB
@@ -14,9 +15,10 @@ const JPG_MIME_TYPE = "image/jpg"
 const MIME_TYPES = [PNG_MIME_TYPE, JPEG_MIME_TYPE, JPG_MIME_TYPE]
 
 const parser = (event, fileZise) => {
-    new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         const busboy = new Busboy({
             headers: {
+                ...event.headers,
                 'content-type':
                 event.headers['content-type'] || event.headers['Content-Type']
             },
@@ -50,14 +52,15 @@ const parser = (event, fileZise) => {
         });
     
         busboy.on('error', error => {
-            reject(error)
+            reject(error);
         })
     
         busboy.on('finish', () => {
-            resolve(result);
+            resolve(result)
         })
     
         busboy.write(event.body, event.isBase64Encoded ? 'base64' : 'binary')
+        busboy.end()
     })
 }
 
@@ -70,7 +73,7 @@ const isAllowedFile = (size, mimeType) => {
 }
 
 const uploadToS3 = (bucket, key, buffer, mimeType) => {
-    new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         s3.upload(
             { Bucket: bucket, Key: key, Body: buffer, ContentType: mimeType },
             function(err, data) {
@@ -81,7 +84,7 @@ const uploadToS3 = (bucket, key, buffer, mimeType) => {
 }
 
 const resize = (buffer, mimeType, width) => {
-    new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         Jimp.read(buffer)
         .then(image => image.resize(width, Jimp.AUTO).quality(70).getBufferAsync(mimeType))
         .then(resizedBuffer => resolve(resizedBuffer))
@@ -89,7 +92,7 @@ const resize = (buffer, mimeType, width) => {
     })
 }
 
-module.exports.handler = async event => {
+module.exports.handler = async (event) => {
     try {
         const formData = await parser(event, MAX_SIZE)
         const file = formData.files[0]
@@ -109,8 +112,6 @@ module.exports.handler = async event => {
 
         const signedOriginalUrl = s3.getSignedUrl("getObject", { Bucket: originalFile.Bucket, Key: originalKey, Expires: 60000 })
         const signedThumbnailUrl = s3.getSignedUrl("getObject", { Bucket: thumbnailFile.Bucket, Key: thumbnailKey, Expires: 60000 })
-
-        console.log(signedOriginalUrl, '++++++++++++++++++=')
 
         return {
             statusCode: 200,

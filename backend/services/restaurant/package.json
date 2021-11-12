@@ -13,7 +13,8 @@
   "license": "ISC",
   "devDependencies": {
     "aws-sdk": "^2.1021.0",
-    "serverless": "^2.64.1"
+    "serverless": "^2.64.1",
+    "serverless-offline": "^8.2.0"
   },
   "dependencies": {
     "busboy": "^0.3.1",
