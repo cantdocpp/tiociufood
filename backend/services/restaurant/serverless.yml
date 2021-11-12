@@ -37,3 +37,10 @@ functions:
           path: /api/v1/restaurant
           method: get
           cors: true
+  testUploadImage:
+    handler: src/testupload.handler
+    events:
+      - http:
+          path: /api/v1/testupload
+          method: post
+          cors: true

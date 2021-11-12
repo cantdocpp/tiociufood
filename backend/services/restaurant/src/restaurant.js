@@ -59,42 +59,42 @@ module.exports = {
       }
     }
 
-    try {
-      await docClient.put({
-        TableName: 'mainTable',
-        Item: {
-          identifier: `RESTAURANT#${restaurantName}`,
-          sk: `RESTAURANT#${restaurantName}`,
-          restaurantName: restaurantName,
-          restaurantAddress: restaurantAddress,
-          restaurantDescription: restaurantDescription
-        }
-      }).promise()
-      return {
-        statusCode: 200,
-        headers: {
-            "Access-Control-Allow-Headers": "Content-Type",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-        },
-        body: JSON.stringify({
-            message: 'success add restaurant'
-        })
-      }
-    } catch(err) {
-      return {
-        statusCode: 500,
-        headers: {
-            "Access-Control-Allow-Headers": "Content-Type",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-        },
-        body: JSON.stringify({
-            message: 'something is wrong on the server',
-            error: err
-        })
-      }
-    }
+    // try {
+    //   await docClient.put({
+    //     TableName: 'mainTable',
+    //     Item: {
+    //       identifier: `RESTAURANT#${restaurantName}`,
+    //       sk: `RESTAURANT#${restaurantName}`,
+    //       restaurantName: restaurantName,
+    //       restaurantAddress: restaurantAddress,
+    //       restaurantDescription: restaurantDescription
+    //     }
+    //   }).promise()
+    //   return {
+    //     statusCode: 200,
+    //     headers: {
+    //         "Access-Control-Allow-Headers": "Content-Type",
+    //         "Access-Control-Allow-Origin": "*",
+    //         "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+    //     },
+    //     body: JSON.stringify({
+    //         message: 'success add restaurant'
+    //     })
+    //   }
+    // } catch(err) {
+    //   return {
+    //     statusCode: 500,
+    //     headers: {
+    //         "Access-Control-Allow-Headers": "Content-Type",
+    //         "Access-Control-Allow-Origin": "*",
+    //         "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+    //     },
+    //     body: JSON.stringify({
+    //         message: 'something is wrong on the server',
+    //         error: err
+    //     })
+    //   }
+    // }
   },
   getRestaurant: async (event) => {
     try {
