@@ -4,7 +4,7 @@ const AWS = require("aws-sdk")
 const { v4: uuidv4 } = require("uuid")
 const Jimp = require("jimp")
 const s3 = new AWS.S3()
-const formParser = require("./formParser")
+const Busboy = require('busboy');
 
 const bucket = process.env.Bucket
 const MAX_SIZE = 4000000 // 4MB
@@ -12,6 +12,55 @@ const PNG_MIME_TYPE = "image/png"
 const JPEG_MIME_TYPE = "image/jpeg"
 const JPG_MIME_TYPE = "image/jpg"
 const MIME_TYPES = [PNG_MIME_TYPE, JPEG_MIME_TYPE, JPG_MIME_TYPE]
+
+const parser = () => {
+    new Promise((resolve, reject) => {
+        const busboy = new Busboy({
+            headers: {
+                'content-type':
+                event.headers['content-type'] || event.headers['Content-Type']
+            },
+            limits: {
+                fileZise
+            }
+        });
+    
+        const result = {
+            files: []
+        };
+    
+        busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
+            const uploadFile = {}
+            file.on('data', data => {
+                uploadFile.content = data
+            });
+            file.on('end', () => {
+                if (uploadFile.content) {
+                    uploadFile.filename = filename
+                    uploadFile.contentType = mimetype
+                    uploadFile.encoding = encoding
+                    uploadFile.fieldname = fieldname
+                    result.files.push(uploadFile)
+                 }
+            })
+        })
+    
+        busboy.on('field', (fieldname, value) => {
+            result[fieldname] = value
+        });
+    
+        busboy.on('error', error => {
+            reject(error)
+        })
+    
+        busboy.on('finish', () => {
+            resolve(result);
+        })
+    
+        busboy.write(event.body, event.isBase64Encoded ? 'base64' : 'binary')
+        busboy.end()
+    })
+}
 
 const isAllowedFile = (size, mimeType) => {
     if (size < MAX_SIZE && !mimeType.includes(MIME_TYPES)) {
@@ -43,7 +92,7 @@ const resize = (buffer, mimeType, width) => {
 
 module.exports.handler = async event => {
     try {
-        const formData = await formParser.parser(event, MAX_SIZE)
+        const formData = await parser(event, MAX_SIZE)
         const file = formData.files[0]
 
         if (!isAllowedFile(file.content.byteLength, file.contentType))
