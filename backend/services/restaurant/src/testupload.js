@@ -129,16 +129,13 @@ module.exports.handler = async event => {
         }
     } catch (e) {
         return {
-            statusCode: 401,
+            statusCode: 500,
             headers: {
                 "Access-Control-Allow-Headers": "Content-Type",
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
             },
-            body: {
-                error: e,
-                message:'fucking error'
-            }
+            body: JSON.stringify(e)
         }
     }
 }
