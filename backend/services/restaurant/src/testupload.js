@@ -6,7 +6,7 @@ const Jimp = require("jimp")
 const s3 = new AWS.S3()
 const Busboy = require('busboy');
 
-const bucket = process.env.Bucket
+const bucket = 'tiociufood'
 const MAX_SIZE = 4000000 // 4MB
 const PNG_MIME_TYPE = "image/png"
 const JPEG_MIME_TYPE = "image/jpeg"
@@ -90,7 +90,8 @@ const resize = (buffer, mimeType, width) => {
     })
 }
 
-module.exports.handler = async (event) => {
+module.exports.handler = async event => {
+    console.log(event, '+++++++++++++++++++++=')
     try {
         const formData = await parser(event, MAX_SIZE)
         const file = formData.files[0]
