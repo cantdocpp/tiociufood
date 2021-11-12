@@ -94,7 +94,7 @@ module.exports.handler = async event => {
     try {
         const formData = await parser(event, MAX_SIZE)
 
-        const file = formData.files[0]
+        const file = formData.result.files[0]
 
         return {
             statusCode: 200,
