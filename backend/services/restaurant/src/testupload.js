@@ -93,6 +93,20 @@ const resize = (buffer, mimeType, width) => {
 module.exports.handler = async event => {
     try {
         const formData = await parser(event, MAX_SIZE)
+
+        return {
+            statusCode: 200,
+            headers: {
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+            },
+            body: JSON.stringify({
+                message: 'success add image',
+                formData: formData
+            })
+          }
+
         const file = formData.files[0]
 
         if (!isAllowedFile(file.content.byteLength, file.contentType))
