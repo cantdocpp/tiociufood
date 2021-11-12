@@ -103,7 +103,7 @@ module.exports.handler = async event => {
             },
             body: JSON.stringify({
                 message: 'success add image',
-                formData: formData
+                formData: JSON.stringify(formData)
             })
           }
 
