@@ -13,7 +13,7 @@ const JPEG_MIME_TYPE = "image/jpeg"
 const JPG_MIME_TYPE = "image/jpg"
 const MIME_TYPES = [PNG_MIME_TYPE, JPEG_MIME_TYPE, JPG_MIME_TYPE]
 
-const parser = () => {
+const parser = (event, fileZise) => {
     new Promise((resolve, reject) => {
         const busboy = new Busboy({
             headers: {
