@@ -91,7 +91,6 @@ const resize = (buffer, mimeType, width) => {
 }
 
 module.exports.handler = async event => {
-    console.log(event, '++++++++++++++++=')
     try {
         const formData = await parser(event, MAX_SIZE)
         const file = formData.files[0]
