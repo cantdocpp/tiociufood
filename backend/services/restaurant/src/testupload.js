@@ -111,6 +111,8 @@ module.exports.handler = async event => {
         const signedOriginalUrl = s3.getSignedUrl("getObject", { Bucket: originalFile.Bucket, Key: originalKey, Expires: 60000 })
         const signedThumbnailUrl = s3.getSignedUrl("getObject", { Bucket: thumbnailFile.Bucket, Key: thumbnailKey, Expires: 60000 })
 
+        console.log(signedOriginalUrl, '++++++++++++++++++=')
+
         return {
             statusCode: 200,
             body: JSON.stringify({
@@ -128,6 +130,11 @@ module.exports.handler = async event => {
     } catch (e) {
         return {
             statusCode: 401,
+            headers: {
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+            },
             body: {
                 error: e,
                 message:'fucking error'
