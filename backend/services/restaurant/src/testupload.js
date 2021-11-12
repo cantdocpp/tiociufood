@@ -1,7 +1,7 @@
 "use strict";
 
 const AWS = require("aws-sdk")
-const uuid = require("uuid/v4")
+const { v4: uuidv4 } = require("uuid")
 const Jimp = require("jimp")
 const s3 = new AWS.S3()
 const formParser = require("./formParser")
@@ -49,7 +49,7 @@ module.exports.handler = async event => {
         if (!isAllowedFile(file.content.byteLength, file.contentType))
             getErrorMessage("File size or type not allowed")
 
-        const uid = uuid()
+        const uid = uuidv4()
         const originalKey = `${uid}_original_${file.filename}`
         const thumbnailKey = `${uid}_thumbnail_${file.filename}`
 
