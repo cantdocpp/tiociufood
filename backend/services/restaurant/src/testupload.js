@@ -7,7 +7,7 @@ const s3 = new AWS.S3()
 const Busboy = require('busboy');
 
 const bucket = 'tiociufood'
-const MAX_SIZE = 4000000 // 4MB
+const MAX_SIZE = 40000000 // 4MB
 const PNG_MIME_TYPE = "image/png"
 const JPEG_MIME_TYPE = "image/jpeg"
 const JPG_MIME_TYPE = "image/jpg"
@@ -94,6 +94,8 @@ module.exports.handler = async event => {
     try {
         const formData = await parser(event, MAX_SIZE)
 
+        const file = formData.files[0]
+
         return {
             statusCode: 200,
             headers: {
@@ -103,11 +105,9 @@ module.exports.handler = async event => {
             },
             body: JSON.stringify({
                 message: 'success add image',
-                formData: JSON.stringify(formData)
+                formData: JSON.stringify(file)
             })
-          }
-
-        const file = formData.files[0]
+        }
 
         if (!isAllowedFile(file.content.byteLength, file.contentType))
             getErrorMessage("File size or type not allowed")
