@@ -135,7 +135,7 @@ module.exports.handler = async event => {
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
             },
-            body: JSON.stringify(e)
+            body: JSON.stringify(e.message)
         }
     }
 }
