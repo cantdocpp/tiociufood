@@ -54,6 +54,18 @@ const parser = (event, fileZise) => {
         })
     
         busboy.on('finish', () => {
+            return {
+                statusCode: 200,
+                headers: {
+                    "Access-Control-Allow-Headers": "Content-Type",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+                },
+                body: JSON.stringify({
+                    message: 'success add image',
+                    formData: JSON.stringify(result)
+                })
+            }
             resolve(result);
         })
     
@@ -92,21 +104,8 @@ const resize = (buffer, mimeType, width) => {
 
 module.exports.handler = async event => {
     try {
-        const formData = await parser(event, MAX_SIZE).promise()
+        const formData = await parser(event, MAX_SIZE)
         const file = formData.files[0]
-
-        return {
-            statusCode: 200,
-            headers: {
-                "Access-Control-Allow-Headers": "Content-Type",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-            },
-            body: JSON.stringify({
-                message: 'success add image',
-                formData: JSON.stringify(file)
-            })
-        }
 
         if (!isAllowedFile(file.content.byteLength, file.contentType))
             getErrorMessage("File size or type not allowed")
