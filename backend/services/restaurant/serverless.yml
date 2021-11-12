@@ -6,6 +6,9 @@ provider:
   region: us-east-2
   stage: ${opt:stage, 'dev'}
   timeout: 3
+  apiGateway:
+    binaryMediaTypes:
+      - "*/*"
   iam:
     role:
       statements:
