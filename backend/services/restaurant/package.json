@@ -16,6 +16,7 @@
     "serverless": "^2.64.1"
   },
   "dependencies": {
+    "busboy": "^0.3.1",
     "jimp": "^0.16.1",
     "uuid": "^8.3.2"
   }
