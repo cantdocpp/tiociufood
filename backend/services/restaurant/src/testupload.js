@@ -54,23 +54,10 @@ const parser = (event, fileZise) => {
         })
     
         busboy.on('finish', () => {
-            return {
-                statusCode: 200,
-                headers: {
-                    "Access-Control-Allow-Headers": "Content-Type",
-                    "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-                },
-                body: JSON.stringify({
-                    message: 'success add image',
-                    formData: JSON.stringify(result)
-                })
-            }
             resolve(result);
         })
     
         busboy.write(event.body, event.isBase64Encoded ? 'base64' : 'binary')
-        busboy.end()
     })
 }
 
