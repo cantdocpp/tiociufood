@@ -92,9 +92,8 @@ const resize = (buffer, mimeType, width) => {
 
 module.exports.handler = async event => {
     try {
-        const formData = await parser(event, MAX_SIZE)
-
-        const file = formData.result.files[0]
+        const formData = await parser(event, MAX_SIZE).promise()
+        const file = formData.files[0]
 
         return {
             statusCode: 200,
