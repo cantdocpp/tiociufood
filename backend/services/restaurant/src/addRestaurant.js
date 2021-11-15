@@ -114,7 +114,7 @@ module.exports = {
             const signedOriginalUrl = s3.getSignedUrl("getObject", { Bucket: originalFile.Bucket, Key: originalKey, Expires: 60000 })
             const signedThumbnailUrl = s3.getSignedUrl("getObject", { Bucket: thumbnailFile.Bucket, Key: thumbnailKey, Expires: 60000 })
 
-            image = {
+            const image = {
                 id: uid,
                 mimeType: file.contentType,
                 originalKey: originalFile.key,
