@@ -13,6 +13,12 @@ const JPEG_MIME_TYPE = "image/jpeg"
 const JPG_MIME_TYPE = "image/jpg"
 const MIME_TYPES = [PNG_MIME_TYPE, JPEG_MIME_TYPE, JPG_MIME_TYPE]
 
+AWS.config.update({region: 'us-east-2'})
+
+const docClient = new AWS.DynamoDB.DocumentClient({
+    region: 'us-east-2'
+})
+
 const parser = (event, fileZise) => {
     return new Promise((resolve, reject) => {
         const busboy = new Busboy({
