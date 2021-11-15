@@ -7,7 +7,7 @@ const docClient = new AWS.DynamoDB.DocumentClient({
 })
 
 module.exports = {
-    handler: () => {
+    handler: async () => {
         try {
             const restaurantSearchResult = await docClient.scan({
               TableName: 'mainTable',
