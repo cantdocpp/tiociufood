@@ -159,7 +159,7 @@ module.exports = {
                             restaurantName: restaurantName,
                             restaurantAddress: restaurantAddress,
                             restaurantDescription: restaurantDescription, 
-                            restaurantImage: image.signedThumbnailUrl
+                            restaurantImage: image.originalUrl
                         }
                     })
                 }
