@@ -141,8 +141,8 @@ module.exports = {
                         restaurantName: restaurantName,
                         restaurantAddress: restaurantAddress,
                         restaurantDescription: restaurantDescription,
-                        restaurantImage: image.signedOriginalUrl.split('?')[0],
-                        restaurantThumbnail: image.signedThumbnailUrl.split('?')[0]
+                        restaurantImage: image.originalUrl,
+                        restaurantThumbnail: image.thumbnailUrl
                     }
                 }).promise()
                 
