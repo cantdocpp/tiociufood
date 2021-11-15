@@ -5,7 +5,6 @@ const { v4: uuidv4 } = require("uuid")
 const Jimp = require("jimp")
 const s3 = new AWS.S3()
 const Busboy = require('busboy');
-const multiparty = require('multiparty');
 
 const bucket = 'tiociufood'
 const MAX_SIZE = 40000000 // 4MB
@@ -95,6 +94,7 @@ const resize = (buffer, mimeType, width) => {
 module.exports.handler = async (event) => {
     try {
         const formData = await parser(event, MAX_SIZE)
+        console.log(formData)
         const file = formData.files[0]
 
         if (!isAllowedFile(file.content.byteLength, file.contentType))
