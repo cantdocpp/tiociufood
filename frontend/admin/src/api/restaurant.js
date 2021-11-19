@@ -20,13 +20,16 @@ const get_restaurant = () => {
 
 const add_restaurant = (data) => {
     const url = endpoint + '/add'
-
-    // console.log(data.restaurantImage, '__________________')
+    const headers = {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    }
 
     return axios
-            .post(url, data)
+            .post(url, data, headers)
             .then(res => {
-                console.log(res)
+                return res.data
             })
             .catch(err => {
                 console.log(err.response)

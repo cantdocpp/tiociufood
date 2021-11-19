@@ -46,6 +46,7 @@ export default {
 <style scoped>
     .table {
         width: 100%;
+        table-layout: fixed;
     }
 
     .th {
@@ -55,5 +56,6 @@ export default {
     .td {
         text-align: center;
         padding: 5px 0;
+        word-wrap: break-word;
     }
 </style>

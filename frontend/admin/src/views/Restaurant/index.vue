@@ -3,6 +3,7 @@
         <Add 
             v-if="isAdd"
             @close="closeAddModal"
+            @add="addTableData"
         />
         <Spacer :y="50" />
         <Loading v-if="isLoading" />
@@ -36,7 +37,7 @@ export default {
     data() {
         return {
             isLoading: true,
-            tableList: ['Restaurant name', 'Restaurant address', 'Restaurant description'],
+            tableList: ['restaurant name', 'restaurant address', 'restaurant description'],
             tableData: [],
             isAdd: false
         }
@@ -46,6 +47,10 @@ export default {
             this.isAdd = true
         },
         closeAddModal() {
+            this.isAdd = false
+        },
+        addTableData(data) {
+            this.tableData.push(data)
             this.isAdd = false
         }
     },
@@ -66,4 +71,3 @@ export default {
     }
 }
 </script>
-

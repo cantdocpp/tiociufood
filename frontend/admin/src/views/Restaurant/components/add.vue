@@ -3,7 +3,7 @@
         header-text="add restaurant"
         v-bind="$attrs"
     >
-        <Form @submit="submit">
+        <Form @submit.prevent="submit">
             <Stack>
                 <Label name="restaurant name">
                     <Input
@@ -60,31 +60,26 @@ export default {
                 restaurantName: '',
                 restaurantAddress: '',
                 restaurantDescription: '',
-                restaurantImageName: '',
                 restaurantImage: []
             }
         }
     },
     methods: {
         handleUpload(event) {
-            const file = event.target.files[0]
-            console.log(file)
-
-            const reader = new FileReader();
-            reader.onload = e => {
-                const url = e.target.result;
-                
-                this.form.restaurantImage = url
-                this.form.restaurantImageName = file.name
-            }
-
-            reader.readAsDataURL(file)
-            this.form.restaurantImage = [...event.target.files]
+            this.form.restaurantImage = event.target.files[0]
         },
         async submit() {
-            const restaurantImageSplit = this.form.restaurantImage.split(';')
-            this.form.restaurantImage = restaurantImageSplit[1]
-            await add_restaurant(this.form)
+            const formData = new FormData()
+            formData.append('file', this.form.restaurantImage)
+            formData.append('restaurantAddress', this.form.restaurantAddress)
+            formData.append('restaurantDescription', this.form.restaurantDescription)
+            formData.append('restaurantName', this.form.restaurantName)
+            try {
+                const res = await add_restaurant(formData)
+                this.$emit('add', res.data)
+            } catch(err) {
+                console.log(err)
+            }
         }
     },
     components: {
