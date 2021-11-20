@@ -154,11 +154,11 @@ module.exports = {
                         "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
                     },
                     body: JSON.stringify({
-                        message: 'success add restaurant',
+                        message: 'success add food',
                         data: {
-                            restaurantName: restaurantName,
-                            restaurantAddress: restaurantAddress,
-                            restaurantDescription: restaurantDescription, 
+                            foodName: foodName,
+                            foodPrice: foodPrice,
+                            foodRestaurant: foodRestaurant, 
                             restaurantThumbnail: image.thumbnailUrl
                         }
                     })
