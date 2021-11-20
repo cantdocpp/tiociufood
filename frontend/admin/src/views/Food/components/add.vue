@@ -64,6 +64,7 @@ import Break from '@/components/Break'
 import Text from '@/components/Text'
 
 import { get_restaurant } from '@/api/restaurant'
+import { add_food } from '@/api/food'
 
 export default {
     data() {
@@ -86,7 +87,6 @@ export default {
     },
     methods: {
         handleUpload(event) {
-            console.log(event, 'event')
             this.form.foodImage = event.target.files[0]
         },
         async submit() {
@@ -96,7 +96,8 @@ export default {
             formData.append('foodPrice', this.form.foodPrice)
             formData.append('foodRestaurant', this.form.foodRestaurant)
             try {
-                const res = await add_restaurant(formData)
+                const res = await add_food(formData)
+                console.log(res, 'res_________')
                 this.$emit('add', res.data)
             } catch(err) {
                 console.log(err)
