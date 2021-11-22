@@ -1,20 +1,37 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
+import store from '../store'
 
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    redirect: {
+      name: 'Food'
+    }
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    path: "/login",
+    name: "Login",
+    component: () => import("../views/Login"),
+    meta: {
+      needAuth: false
+    }
+  },
+  {
+    path: "/food",
+    name: "Food",
+    component: () => import("../views/Food"),
+    meta: {
+      needAuth: true
+    }
+  },
+  {
+    path: "/restaurant",
+    name: "Restaurant",
+    component: () => import("../views/Restaurant"),
+    meta: {
+      needAuth: true
+    }
   },
 ];
 
@@ -22,5 +39,24 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
+
+router.beforeEach((to, from, next) => {
+  const accessToken = localStorage.getItem('access_token')
+  if (accessToken) {
+    const userAccessToken = JSON.parse(accessToken)
+    store.commit('SET_USER_DATA', {
+      'access_token': userAccessToken
+    })
+  }
+  const isLoggedIn = store.getters.loggedIn
+  if (to.meta.needAuth && !isLoggedIn) {
+    next({ name: 'Login' })
+  }
+
+  if (!to.meta.needAuth && isLoggedIn) {
+    next({ name: 'Home' })
+  }
+  next()
+})
 
 export default router;
