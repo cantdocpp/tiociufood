@@ -59,13 +59,13 @@ module.exports = {
 
         try {
             const adminSearchResult = await docClient.query({
-                TableName: 'adminTable',
-                KeyConditionExpression: '#e = :email',
+                TableName: 'mainTable',
+                KeyConditionExpression: '#i = :email',
                 ExpressionAttributeNames: {
-                    '#e': 'email'
+                    '#i': 'identifier'
                 },
                 ExpressionAttributeValues: {
-                    ':email': email
+                    ':email': `USER#${email}`
                 }
             }).promise()
             
