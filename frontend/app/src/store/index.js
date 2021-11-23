@@ -17,7 +17,7 @@ export default createStore({
   actions: {
     login ({ commit }, credentials) {
       return axios
-        .post("https://u7aiz0a2l6.execute-api.us-east-2.amazonaws.com/dev/api/v1/auth/admin/login", credentials)
+        .post("https://u7aiz0a2l6.execute-api.us-east-2.amazonaws.com/dev/api/v1/auth/user/login", credentials)
         .then(res => {
           commit("SET_USER_DATA", res.data);
           return res

@@ -1,12 +1,16 @@
 import { createRouter, createWebHistory } from "vue-router";
 import store from '../store'
 
+import Home from '../views/Home'
+
 const routes = [
   {
     path: "/",
     name: "Home",
-    redirect: {
-      name: 'Food'
+    component: Home,
+    meta: {
+      needAuth: false,
+      accessWithAuth: true
     }
   },
   {
@@ -14,23 +18,26 @@ const routes = [
     name: "Login",
     component: () => import("../views/Login"),
     meta: {
-      needAuth: false
+      needAuth: false,
+      accessWithAuth: false
     }
   },
   {
-    path: "/food",
-    name: "Food",
-    component: () => import("../views/Food"),
+    path: "/register",
+    name: "Register",
+    component: () => import("../views/Register"),
     meta: {
-      needAuth: true
+      needAuth: false,
+      accessWithAuth: false
     }
   },
   {
-    path: "/restaurant",
-    name: "Restaurant",
-    component: () => import("../views/Restaurant"),
+    path: "/discover",
+    name: "Discover",
+    component: () => import("../views/Discover"),
     meta: {
-      needAuth: true
+      needAuth: false,
+      accessWithAuth: true
     }
   },
 ];
@@ -49,14 +56,21 @@ router.beforeEach((to, from, next) => {
     })
   }
   const isLoggedIn = store.getters.loggedIn
-  if (to.meta.needAuth && !isLoggedIn) {
-    next({ name: 'Login' })
+  if (!isLoggedIn) {
+    if (to.meta.needAuth) {
+      next({ name: 'Login' })
+    } else {
+      next()
+    }
+  } else if (isLoggedIn) {
+    if (to.meta.accessWithAuth) {
+      next()
+    } else if (!to.meta.accessWithAuth) {
+      next({ name: 'Home' })
+    }
+  } else {
+    next()
   }
-
-  if (!to.meta.needAuth && isLoggedIn) {
-    next({ name: 'Home' })
-  }
-  next()
 })
 
 export default router;
