@@ -14,7 +14,7 @@ export default {
         align: {
             type: String,
             default: 'center'
-        }
+        },
     }
 }
 </script>
@@ -22,5 +22,6 @@ export default {
 <style scoped>
     .flex {
         display: flex;
+        flex-wrap: wrap;
     }
 </style>

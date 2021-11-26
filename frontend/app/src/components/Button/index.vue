@@ -31,7 +31,7 @@ export default {
     .button {
         display: block;
         box-sizing: border-box;
-        padding: 8px 10px;
+        padding: 7px 10px;
         border: none;
         border-radius: 4px;
         font-weight: 600;
@@ -44,12 +44,17 @@ export default {
 
     .button--primary {
         color: #fff;
-        background: #CB202D;
+        background: rgb(239, 79, 95);
         font-weight: bold;
     }
 
+    .button--primary:hover {
+        background: rgb(224, 53, 70);
+    }
+
     .button--secondary {
-        color: #000;
+        color: rgb(239, 79, 95);
         background: #fff;
+        border: 1px solid rgb(239, 79, 95);
     }
 </style>

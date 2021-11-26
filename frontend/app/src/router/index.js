@@ -40,6 +40,15 @@ const routes = [
       accessWithAuth: true
     }
   },
+  {
+    path: "/discover/restaurant/:restaurantName",
+    name: "DiscoverRestaurantDetail",
+    component: () => import("../views/RestaurantDetail"),
+    meta: {
+      needAuth: false,
+      accessWithAuth: true
+    }
+  },
 ];
 
 const router = createRouter({
