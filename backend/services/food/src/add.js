@@ -101,7 +101,7 @@ module.exports = {
     handler: async (event) => {
         try {
             const formData = await parser(event, MAX_SIZE)
-            const { files, foodName, foodPrice, foodRestaurant } = formData
+            const { files, foodName } = formData
             const file = files[0]
     
             if (!isAllowedFile(file.content.byteLength, file.contentType))

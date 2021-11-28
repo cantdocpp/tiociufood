@@ -11,26 +11,6 @@
                         v-model="form.foodName"
                     />
                 </Label>
-                <Label name="food price">
-                    <Input
-                        type="number"
-                        placeholder="food price"
-                        v-model="form.foodPrice"
-                    />
-                </Label>
-                <Box v-if="restaurantList">
-                    <Text>
-                        Restaurant list
-                    </Text>
-                    <Label
-                        v-for="(restaurant, index) in getRestauratList"
-                        :key="index"
-                    >
-                        <input type="checkbox" :value="restaurant" v-model="form.foodRestaurant">
-                        {{ restaurant }}
-                    </Label>
-                <Break />
-                </Box>
                 <Label name="food image">
                     <FileInput @change="handleUpload" />
                 </Label>
@@ -63,7 +43,6 @@ import Checkbox from '@/components/Checkbox'
 import Break from '@/components/Break'
 import Text from '@/components/Text'
 
-import { get_restaurant } from '@/api/restaurant'
 import { add_food } from '@/api/food'
 
 export default {
@@ -71,11 +50,8 @@ export default {
         return {
             form: {
                 foodName: '',
-                foodPrice: '',
                 foodImage: '',
-                foodRestaurant: []
             },
-            restaurantList: []
         }
     },
     computed: {
@@ -93,20 +69,13 @@ export default {
             const formData = new FormData()
             formData.append('file', this.form.foodImage)
             formData.append('foodName', this.form.foodName)
-            formData.append('foodPrice', this.form.foodPrice)
-            formData.append('foodRestaurant', this.form.foodRestaurant)
             try {
                 const res = await add_food(formData)
-                console.log(res, 'res_________')
                 this.$emit('add', res.data)
             } catch(err) {
                 console.log(err)
             }
         }
-    },
-    async created() {
-        const restaurantRes = await get_restaurant()
-        this.restaurantList = restaurantRes
     },
     components: {
         Spacer,
