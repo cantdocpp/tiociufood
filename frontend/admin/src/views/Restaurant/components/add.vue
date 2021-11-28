@@ -27,10 +27,23 @@
                 <Label name="restaurant schedule">
                     <Input
                         placeholder="restaurant schedule"
-                        type="number"
                         v-model="form.restaurantSchedule"
                     />
                 </Label>
+                <Box>
+                    <p>
+                        Food List
+                    </p>
+                    <div class="grid" v-if="foods">
+                        <div class="grid__child" v-for="(food, index) in foods" :key="index">
+                            <input type="checkbox" :name="food.foodName" :value="food.foodName" v-model="form.restaurantFood">
+                            <label :for="food.foodName"> {{ food.foodName }} </label>
+                        </div>
+                    </div>
+                    <div v-else>
+                        loading...
+                    </div>
+                </Box>
                 <Label name="restaurant image">
                     <FileInput @change="handleUpload" />
                 </Label>
@@ -61,6 +74,7 @@ import FileInput from '@/components/FileInput'
 import Button from '@/components/Button'
 
 import { add_restaurant } from '@/api/restaurant'
+import { get_food } from '@/api/food'
 
 export default {
     data() {
@@ -70,8 +84,10 @@ export default {
                 restaurantAddress: '',
                 restaurantImage: [],
                 restaurantAvgCost: '',
-                restaurantSchedule: ''
-            }
+                restaurantSchedule: '',
+                restaurantFood: []
+            },
+            foods: []
         }
     },
     methods: {
@@ -85,6 +101,8 @@ export default {
             formData.append('restaurantName', this.form.restaurantName)
             formData.append('restaurantAvgCost', this.form.restaurantAvgCost)
             formData.append('restaurantSchedule', this.form.restaurantSchedule)
+            formData.append('restaurantFood', this.form.restaurantFood)
+
             try {
                 const res = await add_restaurant(formData)
                 this.$emit('add', res.data)
@@ -92,6 +110,10 @@ export default {
                 console.log(err)
             }
         }
+    },
+    async created() {
+        const foods = await get_food()
+        this.foods = foods
     },
     components: {
         Spacer,
@@ -104,7 +126,15 @@ export default {
         FileInput,
         Box,
         Flex,
-        Button
+        Button,
+        Box
     }
 }
 </script>
+
+<style scoped>
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+</style>
