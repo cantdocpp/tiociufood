@@ -139,8 +139,6 @@ module.exports = {
                         identifier: `FOOD#${foodName}`,
                         sk: `FOOD#${foodName}`,
                         foodName: foodName,
-                        foodPrice: foodPrice,
-                        foodRestaurant: foodRestaurant,
                         foodImage: image.originalUrl,
                         foodThumbnail: image.thumbnailUrl
                     }
