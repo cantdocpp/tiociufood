@@ -12,7 +12,7 @@ module.exports = {
             const restaurantSearchResult = await docClient.scan({
               TableName: 'mainTable',
               FilterExpression: 'begins_with(#identifier, :identifier)',
-              ProjectionExpression: 'restaurantName, restaurantDescription, restaurantAddress, restaurantThumbnail',
+              ProjectionExpression: 'restaurantName',
               ExpressionAttributeNames: {
                   '#identifier': 'identifier'
               },
