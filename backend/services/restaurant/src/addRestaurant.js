@@ -101,7 +101,7 @@ module.exports = {
     handler: async (event) => {
         try {
             const formData = await parser(event, MAX_SIZE)
-            const { files, restaurantName, restaurantAddress, restaurantDescription, restaurantSchedule, restaurantAvgCost } = formData
+            const { files, restaurantName, restaurantAddress, restaurantSchedule, restaurantAvgCost } = formData
             const file = files[0]
     
             if (!isAllowedFile(file.content.byteLength, file.contentType))
@@ -140,7 +140,6 @@ module.exports = {
                         sk: `RESTAURANT#${restaurantName}`,
                         restaurantName: restaurantName,
                         restaurantAddress: restaurantAddress,
-                        restaurantDescription: restaurantDescription,
                         restaurantImage: image.originalUrl,
                         restaurantThumbnail: image.thumbnailUrl,
                         restaurantSchedule: restaurantSchedule,
