@@ -37,7 +37,7 @@ export default {
     data() {
         return {
             isLoading: true,
-            tableList: ['food name', 'restaurant address', 'restaurant description'],
+            tableList: ['food name'],
             tableData: [],
             isAdd: false
         }

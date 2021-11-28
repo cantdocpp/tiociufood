@@ -155,9 +155,6 @@ module.exports = {
                         message: 'success add food',
                         data: {
                             foodName: foodName,
-                            foodPrice: foodPrice,
-                            foodRestaurant: foodRestaurant, 
-                            restaurantThumbnail: image.thumbnailUrl
                         }
                     })
                 }
