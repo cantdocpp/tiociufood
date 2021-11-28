@@ -101,7 +101,7 @@ module.exports = {
     handler: async (event) => {
         try {
             const formData = await parser(event, MAX_SIZE)
-            const { files, restaurantName, restaurantAddress, restaurantSchedule, restaurantAvgCost } = formData
+            const { files, restaurantName, restaurantAddress, restaurantSchedule, restaurantAvgCost, restaurantFood } = formData
             const file = files[0]
     
             if (!isAllowedFile(file.content.byteLength, file.contentType))
@@ -143,7 +143,8 @@ module.exports = {
                         restaurantImage: image.originalUrl,
                         restaurantThumbnail: image.thumbnailUrl,
                         restaurantSchedule: restaurantSchedule,
-                        restaurantAvgCost: restaurantAvgCost
+                        restaurantAvgCost: restaurantAvgCost,
+                        restaurantFood: restaurantFood
                     }
                 }).promise()
                 
