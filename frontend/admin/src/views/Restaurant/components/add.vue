@@ -17,9 +17,18 @@
                         v-model="form.restaurantAddress"
                     />
                 </Label>
-                <Label name="restaurant description">
-                    <TextField
-                        v-model="form.restaurantDescription"
+                <Label name="restaurant average cost">
+                    <Input
+                        placeholder="restaurant average cost"
+                        type="number"
+                        v-model="form.restaurantAvgCost"
+                    />
+                </Label>
+                <Label name="restaurant schedule">
+                    <Input
+                        placeholder="restaurant schedule"
+                        type="number"
+                        v-model="form.restaurantSchedule"
                     />
                 </Label>
                 <Label name="restaurant image">
@@ -59,8 +68,9 @@ export default {
             form: {
                 restaurantName: '',
                 restaurantAddress: '',
-                restaurantDescription: '',
-                restaurantImage: []
+                restaurantImage: [],
+                restaurantAvgCost: '',
+                restaurantSchedule: ''
             }
         }
     },
@@ -72,8 +82,9 @@ export default {
             const formData = new FormData()
             formData.append('file', this.form.restaurantImage)
             formData.append('restaurantAddress', this.form.restaurantAddress)
-            formData.append('restaurantDescription', this.form.restaurantDescription)
             formData.append('restaurantName', this.form.restaurantName)
+            formData.append('restaurantAvgCost', this.form.restaurantAvgCost)
+            formData.append('restaurantSchedule', this.form.restaurantSchedule)
             try {
                 const res = await add_restaurant(formData)
                 this.$emit('add', res.data)
