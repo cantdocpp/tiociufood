@@ -158,9 +158,6 @@ module.exports = {
                         message: 'success add restaurant',
                         data: {
                             restaurantName: restaurantName,
-                            restaurantAddress: restaurantAddress,
-                            restaurantDescription: restaurantDescription, 
-                            restaurantThumbnail: image.thumbnailUrl
                         }
                     })
                 }
