@@ -1,4 +1,4 @@
-service: restaurant
+service: review
 
 provider:
   name: aws
@@ -15,6 +15,16 @@ provider:
             - dynamodb:Query
             - dynamodb:Scan
           Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/*"
+
+functions:
+  reviewRestaurant:
+    handler: src/reviewRestaurant.handler
+    memorySize: 128
+    events:
+      - http:
+          path: /api/v1/review/restaurant/add
+          method: post
+          cors: true
 
 plugins:
   - serverless-offline
