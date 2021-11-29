@@ -3,6 +3,7 @@
         <ReviewModal 
             v-if="isReview"
             @close="closeModal"
+            :foods="foods"
         />
         <Container v-if="!isLoading">
             <Box>
@@ -49,13 +50,15 @@ import Box from '@/layouts/Box'
 import Stack from '@/layouts/Stack'
 
 import { get_restaurant_detail } from '@/api/restaurant'
+import { get_food } from '@/api/food'
 
 export default {
     data() {
         return {
             isLoading: true,
             isReview: false,
-            restaurant: {}
+            restaurant: {},
+            foods: []
         }
     },
     methods: {
@@ -69,7 +72,9 @@ export default {
     async created() {
         const restaurantNameDash = this.$route.params.restaurantName
         const restaurantDetail = await get_restaurant_detail(restaurantNameDash)
+        const foods = await get_food()
         this.restaurant = restaurantDetail.restaurantData.Items[0]
+        this.foods = foods.foodData
         this.isLoading = false
     },
     components: {

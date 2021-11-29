@@ -1,14 +1,18 @@
-import { createStore } from "vuex";
-import axios from 'axios';
+import { createStore } from "vuex"
+import axios from 'axios'
+import jwt from 'jsonwebtoken'
 
 export default createStore({
   state: {
     accessToken: null,
+    userData: null,
     loggedIn: false
   },
   mutations: {
     SET_USER_DATA (state, userData) {
       const accessToken = userData.access_token
+      const userState = jwt.decode(accessToken)
+      state.userData = userState
       state.accessToken = accessToken
       localStorage.setItem("access_token", JSON.stringify(accessToken))
       state.loggedIn =  true
@@ -35,8 +39,12 @@ export default createStore({
   },
   modules: {},
   getters: {
-    loggedIn (state) {
+    loggedIn(state) {
       return !!state.loggedIn
+    },
+    
+    userStateData(state) {
+      return state.userData
     }
   }
 });

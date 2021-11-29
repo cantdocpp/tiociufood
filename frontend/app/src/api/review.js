@@ -1,15 +1,15 @@
 import axios from 'axios'
 
-const endpoint = 'https://fac6su5da3.execute-api.us-east-2.amazonaws.com/dev/api/v1/restaurant'
+const endpoint = 'https://sbcuttefva.execute-api.us-east-2.amazonaws.com/dev/api/v1/review'
 
-const get_restaurant = () => {
-    const url = endpoint
+const add_review_restaurant = (data) => {
+    const url = endpoint + '/restaurant/add'
 
     return axios
-            .get(url)
+            .post(url, data)
             .then(res => {
                 if (res.status === 200) {
-                    return res.data.restaurantData
+                    return res.data
                 }
                 return res
             })
@@ -18,11 +18,11 @@ const get_restaurant = () => {
             })
 }
 
-const get_restaurant_detail = (params) => {
-    const url = endpoint + `/${params}`
+const add_review_food = (data) => {
+    const url = endpoint + '/food/add'
 
     return axios
-            .get(url)
+            .post(url, data)
             .then(res => {
                 if (res.status === 200) {
                     return res.data
@@ -35,6 +35,6 @@ const get_restaurant_detail = (params) => {
 }
 
 export {
-    get_restaurant,
-    get_restaurant_detail
+    add_review_restaurant,
+    add_review_food
 }
