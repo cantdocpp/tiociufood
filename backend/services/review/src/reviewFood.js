@@ -12,7 +12,7 @@ module.exports = {
         const { userEmail, restaurantName, reviews } = data
 
         try {
-            reviews.forEach(review => {
+            reviews.forEach(async (review) => {
                 await docClient.put({
                     TableName: 'mainTable',
                     Item: {
@@ -20,8 +20,7 @@ module.exports = {
                         sk: `REVIEW#${userEmail}`,
                         restaurantName: restaurantName,
                         foodRate: review.rate,
-                        reviewContent: review.review,
-                        reviewRate: rate,
+                        reviewContent: review.review
                     }
                 }).promise()
 
@@ -33,8 +32,7 @@ module.exports = {
                         restaurantName: restaurantName,
                         foodName: review.foodName,
                         foodRate: review.rate,
-                        reviewContent: review.review,
-                        reviewRate: rate,
+                        reviewContent: review.review
                     }
                 }).promise()
             })
