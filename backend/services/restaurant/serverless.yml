@@ -50,7 +50,7 @@ functions:
           request:
             parameters:
               paths:
-                name: true
+                name: false
           cors: true
   testUploadImage:
     handler: src/testupload.handler
