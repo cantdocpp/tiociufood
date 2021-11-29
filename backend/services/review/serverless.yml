@@ -25,6 +25,14 @@ functions:
           path: /api/v1/review/restaurant/add
           method: post
           cors: true
+  reviewFood:
+    handler: src/reviewFood.handler
+    memorySize: 128
+    events:
+      - http:
+          path: /api/v1/review/food/add
+          method: post
+          cors: true
 
 plugins:
   - serverless-offline
