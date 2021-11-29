@@ -16,6 +16,10 @@ provider:
             - dynamodb:Scan
           Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/*"
 
+custom:
+  pythonRequirements:
+    zip: true
+
 functions:
   getRecommendation:
     handler: handler.recommendation
@@ -28,3 +32,4 @@ functions:
 
 plugins:
   - serverless-offline
+  - serverless-python-requirements
