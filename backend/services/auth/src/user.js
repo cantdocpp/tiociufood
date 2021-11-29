@@ -68,7 +68,6 @@ module.exports = {
                     ':email': `USER#${email}`
                 }
             }).promise()
-            console.log(userSearchResult.Items)
             
             if (userSearchResult.Items.length <= 0) {
                 return {
