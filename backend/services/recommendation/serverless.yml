@@ -1,0 +1,30 @@
+service: recommendation
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-2
+  stage: ${opt:stage, 'dev'}
+  timeout: 10
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - dynamodb:PutItem
+            - dynamodb:Query
+            - dynamodb:Scan
+          Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/*"
+
+functions:
+  getRecommendation:
+    handler: handler.recommendation
+    memorySize: 512
+    events:
+      - http:
+          path: /api/v1/recommendation
+          method: post
+          cors: true
+
+plugins:
+  - serverless-offline
