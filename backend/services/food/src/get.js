@@ -31,7 +31,7 @@ module.exports = {
                 },
                 body: JSON.stringify({
                     message: 'success get food',
-                    restaurantData: foodSearchResults.Items
+                    foodData: foodSearchResults.Items
                 })
             }
         } catch(e) {
