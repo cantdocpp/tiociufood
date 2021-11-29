@@ -19,7 +19,9 @@
                     v-for="(restaurant, index) in restaurants"
                     :key="index"
                 >
-                    <RestaurantCard />
+                    <RestaurantCard 
+                        :restaurant-data="restaurant" 
+                    />
                 </Link>
             </Grid>
         </Container>

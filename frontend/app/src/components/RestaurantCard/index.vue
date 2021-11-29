@@ -2,13 +2,13 @@
     <div class="restaurant-card">
         <div class="restaurant-card__image__wrapper">
             <img 
-                src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=992&q=80" 
+                :src="restaurantData.restaurantThumbnail" 
                 alt="restaurant image"
                 class="restaurant-card__image"
             >
         </div>
         <div class="restaurant-card__content">
-            <h1 class="restaurant-card__title">Restoran Taman Ayam Panggang Situ Gintung sadsadsa</h1>
+            <h1 class="restaurant-card__title"> {{ restaurantData.restaurantName }} </h1>
             <div class="restaurant-card__rating__wrapper">
                 <div class="restaurant-card__rating">
                     4.7
@@ -21,11 +21,23 @@
                 </span>
             </div>
             <div class="restaurant-card__address">
-                Mall Kelapa Gading, Kelapa Gading, Jakarta utara    
+                {{ restaurantData.restaurantAddress }}  
             </div>
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    props: {
+        restaurantData: {
+            type: Object,
+            required: true
+        }
+    }
+}
+</script>
+
 
 <style scoped>
     .restaurant-card {
@@ -46,6 +58,7 @@
     }
 
     .restaurant-card__title {
+        text-transform: capitalize;
         white-space: nowrap;
         font-weight: 700;
         font-size: 15px;
@@ -77,6 +90,7 @@
     }
 
     .restaurant-card__address {
+        text-transform: capitalize;
         white-space: nowrap;
         margin-top: 8px;
     }
