@@ -1,20 +1,23 @@
 <template>
     <div class="restaurant-detail">
-        <ReviewModal />
-        <Container>
+        <ReviewModal 
+            v-if="isReview"
+            @close="closeModal"
+        />
+        <Container v-if="!isLoading">
             <Box>
                 <Stack>
                     <Title :size="35">
-                        Tio Ciu 78
+                        {{ restaurant.restaurantName }}
                     </Title>
                     <Box>
                         <Text :size="18">
-                            Mangga Besar, jakarta
+                            {{ restaurant.restaurantAddress }}
                         </Text>
                     </Box>
                     <Box>
                         <Text>
-                            10.00 - 23.00 (Today)
+                            {{ restaurant.restaurantSchedule }}
                         </Text>
                     </Box>
                     <Spacer :margin-top="10" />
@@ -25,6 +28,9 @@
                     </Box>
                 </Stack>
             </Box>
+        </Container>
+        <Container v-if="isLoading">
+            loading...
         </Container>
     </div>
 </template>
@@ -42,11 +48,29 @@ import Spacer from '@/layouts/Spacer'
 import Box from '@/layouts/Box'
 import Stack from '@/layouts/Stack'
 
+import { get_restaurant_detail } from '@/api/restaurant'
+
 export default {
+    data() {
+        return {
+            isLoading: true,
+            isReview: false,
+            restaurant: {}
+        }
+    },
     methods: {
         openModal() {
-            console.log('tes')
+            this.isReview = true
+        },
+        closeModal() {
+            this.isReview = false
         }
+    },
+    async created() {
+        const restaurantNameDash = this.$route.params.restaurantName
+        const restaurantDetail = await get_restaurant_detail(restaurantNameDash)
+        this.restaurant = restaurantDetail.restaurantData.Items[0]
+        this.isLoading = false
     },
     components: {
         ReviewModal,

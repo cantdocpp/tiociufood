@@ -1,6 +1,6 @@
 <template>
     <div class="review-modal">
-        <Modal title="Add Review">
+        <Modal title="Add Review" v-bind="$attrs">
             <Text>
                 step: {{ step }}
             </Text>

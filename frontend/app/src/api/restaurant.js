@@ -18,6 +18,23 @@ const get_restaurant = () => {
             })
 }
 
+const get_restaurant_detail = (params) => {
+    const url = endpoint + `/${params}`
+
+    return axios
+            .get(url)
+            .then(res => {
+                if (res.status === 200) {
+                    return res.data
+                }
+                return res
+            })
+            .catch(err => {
+                return err
+            })
+}
+
 export {
-    get_restaurant
+    get_restaurant,
+    get_restaurant_detail
 }
