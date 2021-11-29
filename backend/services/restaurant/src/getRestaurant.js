@@ -20,6 +20,7 @@ module.exports = {
                   ':identifier': 'RESTAURANT'
               }
             }).promise()
+            
             return {
               statusCode: 200,
               headers: {
