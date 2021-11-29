@@ -140,8 +140,8 @@ module.exports = {
                         sk: `RESTAURANT#${restaurantName}`,
                         restaurantName: restaurantName,
                         restaurantAddress: restaurantAddress,
-                        restaurantImage: image.originalUrl,
-                        restaurantThumbnail: image.thumbnailUrl,
+                        restaurantImage: image.originalUrl.split('?')[0],
+                        restaurantThumbnail: image.thumbnailUrl.split('?')[0],
                         restaurantSchedule: restaurantSchedule,
                         restaurantAvgCost: restaurantAvgCost,
                         restaurantFood: restaurantFood

@@ -41,6 +41,17 @@ functions:
           path: /api/v1/restaurant
           method: get
           cors: true
+  getRestaurantDetail:
+    handler: src/getRestaurantDetail.handler
+    events:
+      - http:
+          path: /api/v1/restaurant/{name}
+          method: get
+          request:
+            parameters:
+              paths:
+                name: true
+          cors: true
   testUploadImage:
     handler: src/testupload.handler
     memorySize: 512
