@@ -58,7 +58,7 @@ module.exports = {
         const { email, password } = data
 
         try {
-            const adminSearchResult = await docClient.query({
+            const userSearchResult = await docClient.query({
                 TableName: 'mainTable',
                 KeyConditionExpression: '#i = :email',
                 ExpressionAttributeNames: {
@@ -68,8 +68,9 @@ module.exports = {
                     ':email': `USER#${email}`
                 }
             }).promise()
+            console.log(userSearchResult.Items)
             
-            if (!adminSearchResult.Items) {
+            if (userSearchResult.Items.length <= 0) {
                 return {
                     statusCode: 401,
                     headers: {
@@ -83,11 +84,11 @@ module.exports = {
                 }
             }
 
-            const adminPassword = adminSearchResult.Items[0].password
-            const isPasswordValid = await bcrypt.compare(password, adminPassword)
+            const userPassword = userSearchResult.Items[0].password
+            const isPasswordValid = await bcrypt.compare(password, userPassword)
             
             if (isPasswordValid) {
-                const adminObj = adminSearchResult.Items[0]
+                const adminObj = userSearchResult.Items[0]
                 const token = jwt.sign(adminObj, 'tiociufood')
                 
                 return {
@@ -124,7 +125,7 @@ module.exports = {
                 },
                 body: JSON.stringify({
                     message: 'Something is wrong on the server',
-                    debug: err
+                    debug: JSON.stringify(err.message)
                 })
             }
         }
