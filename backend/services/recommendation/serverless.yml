@@ -2,7 +2,7 @@ service: recommendation
 
 provider:
   name: aws
-  runtime: nodejs12.x
+  runtime: python3.6
   region: us-east-2
   stage: ${opt:stage, 'dev'}
   timeout: 10
@@ -18,7 +18,7 @@ provider:
 
 custom:
   pythonRequirements:
-    dockerizePip: non-linux
+    zip: true
 
 functions:
   getRecommendation:
