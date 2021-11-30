@@ -6,6 +6,10 @@ provider:
   region: us-east-2
   stage: ${opt:stage, 'dev'}
   timeout: 10
+  ecr:
+    images:
+      appimage:
+        path: ./
   package:
     excludeDevDependencies: true
     exclude:
@@ -28,6 +32,8 @@ custom:
 
 functions:
   getRecommendation:
+    image:
+      name: appimage
     handler: handler.recommendation
     memorySize: 1024
     events:
