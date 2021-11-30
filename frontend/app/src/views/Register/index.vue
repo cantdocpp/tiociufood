@@ -9,6 +9,14 @@
                 <Text :size="25" v-if="success">
                     Success Add User
                 </Text>
+                <Label name="Enter your username">
+                    <Input 
+                        placeholder="your username"
+                        :value="form.username"
+                        v-model="form.username"
+                        :error="error.username"
+                    />
+                </Label>
                 <Label name="Enter your email">
                     <Input 
                         placeholder="example@mail.com"
@@ -47,12 +55,14 @@ import { register_user } from '@/api/user'
 
 const errorObj = {
     email: false,
-    password: false
+    password: false,
+    username: false
 }
 
 const formObj = {
     email: '',
-    password: ''
+    password: '',
+    username: ''
 }
 
 export default {
@@ -78,7 +88,11 @@ export default {
                 this.error.password = true
             }
 
-            return this.error.email || this.error.password
+            if (!this.form.username) {
+                this.error.username = true
+            }
+
+            return this.error.email || this.error.password || this.error.username
         },
         async submit() {
             this.error = {
