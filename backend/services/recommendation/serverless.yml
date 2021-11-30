@@ -26,9 +26,9 @@ functions:
       name: appimage
     events:
       - httpApi:
-        method: POST
-        path: /api/v1/recommendation
-        cors: true
+          method: POST
+          path: /api/v1/recommendation
+          cors: true
 
 plugins:
   - serverless-offline
