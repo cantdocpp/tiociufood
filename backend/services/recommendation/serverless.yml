@@ -10,12 +10,6 @@ provider:
     images:
       appimage:
         path: ./
-  package:
-    excludeDevDependencies: true
-    exclude:
-      - node_modules/**
-      - venv/**
-      - .git/**
   iam:
     role:
       statements:
@@ -31,7 +25,10 @@ functions:
     image:
       name: appimage
     events:
-      - httpApi: 'POST /api/v1/recommendation'
+      - httpApi:
+        method: POST
+        path: /api/v1/recommendation
+        cors: true
 
 plugins:
   - serverless-offline
