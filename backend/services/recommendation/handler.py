@@ -6,6 +6,7 @@ def recommendation(event, context):
         "input": event
     }
 
+
     response = {
         "statusCode": 200,
         "body": json.dumps(body)
