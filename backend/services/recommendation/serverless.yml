@@ -24,11 +24,11 @@ functions:
   getRecommendation:
     image:
       name: appimage
-    events:
-      - httpApi:
-          method: POST
-          path: /api/v1/recommendation
-          cors: true
+      events:
+        - httpApi:
+            method: POST
+            path: /api/v1/recommendation
+            cors: true
 
 plugins:
   - serverless-offline
