@@ -11,7 +11,7 @@ const requestJson = {
                 'PutRequest': {
                     'Item': {
                         'name': 'philip bryan',
-                        'review': [
+                        'reviews': [
                             {
                                 'foodName': 'fu yung hai',
                                 'foodRate': 5
