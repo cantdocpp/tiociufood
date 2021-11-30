@@ -31,7 +31,7 @@ functions:
     image:
       name: appimage
     events:
-      - http:
+      - httpApi:
           path: /api/v1/recommendation
           method: post
           cors: true
