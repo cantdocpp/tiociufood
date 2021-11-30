@@ -8,7 +8,7 @@ provider:
   timeout: 10
   ecr:
     images:
-      appimage:
+      baseimage:
         path: ./
   iam:
     role:
@@ -23,7 +23,7 @@ provider:
 functions:
   getRecommendation:
     image:
-      name: appimage
+      name: baseimage
       events:
         - httpApi:
             method: POST
