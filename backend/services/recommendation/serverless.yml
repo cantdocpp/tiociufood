@@ -34,7 +34,6 @@ functions:
   getRecommendation:
     image:
       name: appimage
-    handler: handler.recommendation
     memorySize: 1024
     events:
       - http:
