@@ -1,84 +1,8 @@
 import json
 import boto3
-import numpy as np
 import pandas as pd
 from sklearn.neighbors import NearestNeighbors
 from boto3.dynamodb.types import TypeDeserializer
-from boto3.dynamodb.conditions import Key, Attr
-
-# def recommend_foods(user, num_recommended_foods):
-#     print('The list of the Foods {} Has Eaten \n'.format(user))
-
-#     for m in df[df[user] > 0][user].index.tolist():
-#         print(m)
-    
-#     print('\n')
-
-#     recommended_foods = []
-
-#     for m in df[df[user] == 0].index.tolist():
-#         index_df = df.index.tolist().index(m)
-#         predicted_rating = df1.iloc[index_df, df1.columns.tolist().index(user)]
-#         recommended_foods.append((m, predicted_rating))
-
-#     sorted_rm = sorted(recommended_foods, key=lambda x:x[1], reverse=True)
-    
-#     print('The list of the Recommended Movies \n')
-#     rank = 1
-#     foods = []
-#     for recommended_food in sorted_rm[:num_recommended_foods]:
-#         print(recommended_food)
-#         print('{}: {} - predicted rating:{}'.format(rank, recommended_food[0], recommended_food[1]))
-#         foods.append(recommended_food[0])
-#         rank = rank + 1
-#     return foods
-
-# def food_recommender(df, user, num_neighbors, num_recommendation):
-#     df1 = df.copy()
-#     number_neighbors = num_neighbors
-
-#     knn = NearestNeighbors(metric='cosine', algorithm='brute')
-#     knn.fit(df.values)
-#     distances, indices = knn.kneighbors(df.values, n_neighbors=number_neighbors)
-
-#     user_index = df.columns.tolist().index(user)
-
-#     for m,t in list(enumerate(df.index)):
-#         if df.iloc[m, user_index] == 0:
-#             sim_foods = indices[m].tolist()
-#             food_distances = distances[m].tolist()
-
-#             if m in sim_foods:
-#                 id_food = sim_foods.index(m)
-#                 sim_foods.remove(m)
-#                 food_distances.pop(id_food) 
-#             else:
-#                 sim_foods = sim_foods[:num_neighbors-1]
-#                 food_distances = food_distances[:num_neighbors-1]
-            
-#             food_similarity = [1-x for x in food_distances]
-#             food_similarity_copy = food_similarity.copy()
-#             nominator = 0
-
-#             for s in range(0, len(food_similarity)):
-#                 if df.iloc[sim_foods[s], user_index] == 0:
-#                     if len(food_similarity_copy) == (number_neighbors - 1):
-#                         food_similarity_copy.pop(s)
-#                     else:
-#                         food_similarity_copy.pop(s-(len(food_similarity)-len(food_similarity_copy)))
-#                 else:
-#                     nominator = nominator + food_similarity[s]*df.iloc[sim_foods[s],user_index]
-            
-#             if len(food_similarity_copy) > 0:
-#                 if sum(food_similarity_copy) > 0:
-#                     predicted_r = nominator/sum(food_similarity_copy)
-#                 else:
-#                     predicted_r = 0
-#             else:
-#                 predicted_r = 0
-            
-#             df1.iloc[m,user_index] = predicted_r
-#         return recommend_foods(df, user,num_recommendation)
 
 def recommendation(event, context):
     event_body = json.loads(event['body'])
