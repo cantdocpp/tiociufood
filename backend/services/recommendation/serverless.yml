@@ -6,6 +6,12 @@ provider:
   region: us-east-2
   stage: ${opt:stage, 'dev'}
   timeout: 10
+  package:
+    excludeDevDependencies: true
+    exclude:
+      - node_modules/**
+      - venv/**
+      - .git/**
   iam:
     role:
       statements:
