@@ -26,15 +26,10 @@ provider:
             - dynamodb:Scan
           Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/*"
 
-custom:
-  pythonRequirements:
-    zip: true
-
 functions:
   getRecommendation:
     image:
       name: appimage
-    memorySize: 1024
     events:
       - http:
           path: /api/v1/recommendation
