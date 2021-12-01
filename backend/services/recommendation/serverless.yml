@@ -30,6 +30,13 @@ functions:
           method: POST
           path: /api/v1/recommendation
           cors: true
+  test:
+    handler: test.handler
+    events:
+      - http:
+          method: POST
+          path: /api/v1/recommendation
+          cors: true
 
 plugins:
   - serverless-offline
