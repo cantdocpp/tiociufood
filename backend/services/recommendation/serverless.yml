@@ -1,4 +1,4 @@
-service: recommendation
+service: recommendations
 
 provider:
   name: aws
