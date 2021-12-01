@@ -10,6 +10,7 @@ from sklearn.neighbors import NearestNeighbors
 from boto3.dynamodb.types import TypeDeserializer
 
 def recommendation(event, context):
+    print('test')
     event_body = json.loads(event['body'])
     user_email = event_body['email']
     username = event_body['username']
