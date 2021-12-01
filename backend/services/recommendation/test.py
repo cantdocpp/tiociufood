@@ -6,7 +6,7 @@ except ImportError:
 import json
 
 def handler(event, context):
-    print(json.load(event))
+    print(json.loads(event))
     print(event)
     body = {
         "message": "success getting food recommendation",
