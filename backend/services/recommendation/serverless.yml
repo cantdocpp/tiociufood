@@ -23,6 +23,7 @@ custom:
 
 functions:
   getRecommendation:
+    handler: handler.recommendation
     events:
       - http:
           method: POST
