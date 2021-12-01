@@ -5,7 +5,7 @@ provider:
   runtime: python3.8
   region: us-east-2
   stage: ${opt:stage, 'dev'}
-  timeout: 10
+  timeout: 15
   iam:
     role:
       statements:
@@ -19,8 +19,6 @@ provider:
 custom:
   pythonRequirements:
     dockerizePip: non-linux
-    zip: true
-    slim: true
 
 functions:
   getRecommendation:

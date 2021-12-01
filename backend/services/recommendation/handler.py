@@ -1,7 +1,8 @@
-try:
-  import unzip_requirements
-except ImportError:
-  pass
+# try:
+#   import unzip_requirements
+# except ImportError:
+#     print('import error')
+#   pass
 
 import json
 import boto3
