@@ -3,14 +3,18 @@ try:
 except ImportError:
     pass
 
+import logging
 import json
 import boto3
 import pandas as pd
 from sklearn.neighbors import NearestNeighbors
 from boto3.dynamodb.types import TypeDeserializer
 
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
 def recommendation(event, context):
-    print(event)
+    logger.info('test')
     event_body = json.loads(event['body'])
     user_email = event_body['email']
     username = event_body['username']
