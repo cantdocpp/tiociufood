@@ -6,10 +6,6 @@ provider:
   region: us-east-2
   stage: ${opt:stage, 'dev'}
   timeout: 10
-  ecr:
-    images:
-      baseimage:
-        path: ./
   iam:
     role:
       statements:
@@ -20,15 +16,18 @@ provider:
             - dynamodb:Scan
           Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/*"
 
+custom:
+  pythonRequirements:
+    zip: true
+    slim: true
+
 functions:
   getRecommendation:
-    image:
-      name: baseimage
-      events:
-        - httpApi:
-            method: POST
-            path: /api/v1/recommendation
-            cors: true
+    events:
+      - http:
+          method: POST
+          path: /api/v1/recommendation
+          cors: true
 
 plugins:
   - serverless-offline
