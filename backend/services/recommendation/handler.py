@@ -14,6 +14,8 @@ def recommendation(event, context):
     user_email = event_body['email']
     username = event_body['username']
 
+    print(username)
+
     deserializer = TypeDeserializer()
     client = boto3.client('dynamodb')
 
@@ -152,7 +154,7 @@ def recommendation(event, context):
                 # print(predicted_r)
         return recommend_foods(user, num_recommendation)
     
-    food_recommendation = food_recommender('patrick', 10, 10)
+    food_recommendation = food_recommender(username, 10, 10)
 
     body = {
         "message": "success getting food recommendation",
