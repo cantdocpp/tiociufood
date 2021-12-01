@@ -25,6 +25,7 @@ custom:
 functions:
   getRecommendation:
     handler: handler.recommendation
+    memorySize: 2048
     events:
       - http:
           method: POST
