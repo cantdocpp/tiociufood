@@ -19,6 +19,7 @@ provider:
 custom:
   pythonRequirements:
     dockerizePip: non-linux
+    zip: true
 
 functions:
   getRecommendation:
