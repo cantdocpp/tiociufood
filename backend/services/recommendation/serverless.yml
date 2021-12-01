@@ -35,7 +35,7 @@ functions:
     events:
       - http:
           method: POST
-          path: /api/v1/recommendation
+          path: /api/v1/recommendation/test
           cors: true
 
 plugins:
