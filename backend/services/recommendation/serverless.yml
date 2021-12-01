@@ -18,7 +18,7 @@ provider:
 
 custom:
   pythonRequirements:
-    zip: true
+    slim: true
 
 functions:
   getRecommendation:
