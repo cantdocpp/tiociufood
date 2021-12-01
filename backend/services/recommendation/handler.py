@@ -1,7 +1,6 @@
 try:
     import unzip_requirements
 except ImportError:
-    print('import error')
     pass
 
 import json
