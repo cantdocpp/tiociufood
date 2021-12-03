@@ -10,9 +10,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "serverless": "^2.67.0",
-    "serverless-offline": "^8.3.1",
-    "serverless-python-requirements": "^5.2.0"
-  },
-  "dependencies": {}
+    "aws-sdk": "^2.1041.0",
+    "serverless": "^2.68.0",
+    "serverless-offline": "^8.3.1"
+  }
 }

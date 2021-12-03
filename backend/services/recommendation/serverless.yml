@@ -2,10 +2,10 @@ service: recommendation
 
 provider:
   name: aws
-  runtime: python3.8
+  runtime: nodejs12.x
   region: us-east-2
   stage: ${opt:stage, 'dev'}
-  timeout: 10
+  timeout: 5
   iam:
     role:
       statements:
@@ -16,27 +16,15 @@ provider:
             - dynamodb:Scan
           Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/*"
 
-custom:
-  pythonRequirements:
-    slim: true
-
 functions:
   getRecommendation:
-    handler: handler.recommendation
+    handler: src/recommendation.handler
     memorySize: 2048
     events:
       - http:
-          method: POST
+          method: post
           path: /api/v1/recommendation
-          cors: true
-  test:
-    handler: test.handler
-    events:
-      - http:
-          method: POST
-          path: /api/v1/recommendation/test
           cors: true
 
 plugins:
   - serverless-offline
-  - serverless-python-requirements
