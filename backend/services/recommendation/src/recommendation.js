@@ -92,7 +92,7 @@ function getUserFoodRate(userReviewArr, foodList, cosineObj) {
 }
 
 module.exports = {
-    handler: async () => {
+    handler: async (event) => {
         const data = JSON.parse(event.body)
         const { email, username } = data
 
