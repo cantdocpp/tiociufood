@@ -54,6 +54,16 @@ const routes = [
       showNavbar: true
     }
   },
+  {
+    path: "/search",
+    name: "Search",
+    component: () => import("../views/Search"),
+    meta: {
+      needAuth: false,
+      accessWithAuth: true,
+      showNavbar: true
+    }
+  }
 ];
 
 const router = createRouter({

@@ -5,9 +5,9 @@
             <h1 class="home__title">Search for restaurant near you</h1>
             <div class="home__input__box">
                 <div class="home__input__wrapper">
-                    <input type="text" placeholder="restaurant name" class="home__input">
+                    <input type="text" placeholder="restaurant name" class="home__input" v-model="userSearch">
                 </div>
-                <button class="home__button">Search</button>
+                <button class="home__button" @click="search">Search</button>
             </div>
             <div class="home__footer">
                 <span class="home__footer__text">Or you can discover more restaurant <router-link to="/discover" class="home__link">here</router-link> </span>
@@ -15,6 +15,22 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            userSearch: ''
+        }
+    },
+    methods: {
+        search() {
+            this.$router.push({ name: 'Search', query: { restaurant: this.userSearch } })
+        }
+    }
+}
+</script>
+
 
 <style scoped>
     .home {
