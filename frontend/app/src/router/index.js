@@ -10,7 +10,8 @@ const routes = [
     component: Home,
     meta: {
       needAuth: false,
-      accessWithAuth: true
+      accessWithAuth: true,
+      showNavbar: false
     }
   },
   {
@@ -19,7 +20,8 @@ const routes = [
     component: () => import("../views/Login"),
     meta: {
       needAuth: false,
-      accessWithAuth: false
+      accessWithAuth: false,
+      showNavbar: true
     }
   },
   {
@@ -28,7 +30,8 @@ const routes = [
     component: () => import("../views/Register"),
     meta: {
       needAuth: false,
-      accessWithAuth: false
+      accessWithAuth: false,
+      showNavbar: true
     }
   },
   {
@@ -37,7 +40,8 @@ const routes = [
     component: () => import("../views/Discover"),
     meta: {
       needAuth: false,
-      accessWithAuth: true
+      accessWithAuth: true,
+      showNavbar: true
     }
   },
   {
@@ -46,7 +50,8 @@ const routes = [
     component: () => import("../views/RestaurantDetail"),
     meta: {
       needAuth: false,
-      accessWithAuth: true
+      accessWithAuth: true,
+      showNavbar: true
     }
   },
 ];

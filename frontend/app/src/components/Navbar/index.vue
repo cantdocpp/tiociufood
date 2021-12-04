@@ -1,5 +1,5 @@
 <template>
-    <nav class="nav">
+    <nav class="nav" v-if="showNavbar">
         <Container>
             <Flex justify="space-between" align="center">
                 <NavLink to="/">
@@ -51,6 +51,11 @@ export default {
     data() {
         return {
             image: 'logo.png'
+        }
+    },
+    computed: {
+        showNavbar() {
+            return this.$route.meta.showNavbar
         }
     },
     components: {
