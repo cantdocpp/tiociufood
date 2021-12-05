@@ -1,5 +1,5 @@
 <template>
-    <div class="logged-in" v-if="!loggedIn">
+    <div class="not-logged-in" v-if="!loggedIn">
         <slot></slot>
     </div>
 </template>

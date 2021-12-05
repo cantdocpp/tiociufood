@@ -13,7 +13,15 @@
                             Discover
                         </Text>
                     </NavLink>
-                    <Spacer :margin-right="20" />
+                    <Spacer :margin-left="20" />
+                    <LoggedInOnly>
+                        <NavLink to="/recommendation">
+                            <Text :size="18">
+                                Recommendation
+                            </Text>
+                        </NavLink>
+                    </LoggedInOnly>
+                    <!-- <Spacer :margin-right="20" /> -->
                     <NotLoggedIn>
                         <Flex>
                             <NavLink to="/login">
@@ -21,7 +29,7 @@
                                     Login
                                 </Text>
                             </NavLink>
-                            <Spacer :margin-right="20" />
+                            <Spacer :margin-left="20" />
                             <NavLink to="/register">
                                 <Text :size="18">
                                     Register

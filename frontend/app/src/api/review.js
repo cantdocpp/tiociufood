@@ -21,6 +21,8 @@ const add_review_restaurant = (data) => {
 const add_review_food = (data) => {
     const url = endpoint + '/food/add'
 
+    console.log('data: ', data)
+
     return axios
             .post(url, data)
             .then(res => {

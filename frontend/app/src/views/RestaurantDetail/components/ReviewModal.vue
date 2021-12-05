@@ -35,8 +35,8 @@
                     </Title>
                     <Grid template-columns="repeat(4, 1fr)" :row-gap="5" :column-gap="5">
                         <div class="checkbox__wrapper" v-for="(food, index) in foods" :key="index">
-                            <input type="checkbox" :value="food.foodName" :name="food.foodName" v-model="eatenFood">
-                            <label :for="food.foodName"> {{ food.foodName }} </label>
+                            <input type="checkbox" :value="food" :name="food" v-model="eatenFood">
+                            <label :for="food"> {{ food }} </label>
                         </div>
                     </Grid>
                     <Flex justify="flex-end">
@@ -130,11 +130,12 @@ export default {
             const restaurantName = this.$route.params.restaurantName.split('-').join(' ')
             const userState = this.$store.getters.userStateData
             const userEmail = userState.email
+            const userRestaurant = JSON.parse(JSON.stringify(this.form.restaurant));
             
             const restaurantData = {
                 restaurantName: restaurantName,
                 userEmail: userEmail,
-                ...this.form.restaurant
+                ...userRestaurant
             }
 
             await add_review_restaurant(restaurantData)
@@ -143,14 +144,20 @@ export default {
             const restaurantName = this.$route.params.restaurantName.split('-').join(' ')
             const userState = this.$store.getters.userStateData
             const userEmail = userState.email
+            const username = userState.username
+            const userFormFoods = JSON.parse(JSON.stringify(this.form.foods));
 
             const foodData = {
                 restaurantName: restaurantName,
                 userEmail: userEmail,
-                reviews: this.form.foods
+                username: username,
+                reviews: userFormFoods
             }
 
-            await add_review_food(foodData)
+            console.log(foodData)
+
+            const res = await add_review_food(foodData)
+            console.log(res)
         },
         async submit() {
             await this.submitRestaurant()

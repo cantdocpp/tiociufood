@@ -63,6 +63,16 @@ const routes = [
       accessWithAuth: true,
       showNavbar: true
     }
+  },
+  {
+    path: "/recommendation",
+    name: "Recommendation",
+    component: () => import("../views/Recommendation"),
+    meta: {
+      needAuth: true,
+      accessWithAuth: true,
+      showNavbar: true
+    }
   }
 ];
 
