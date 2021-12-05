@@ -9,7 +9,7 @@ const get_food = () => {
             .get(url)
             .then(res => {
                 if (res.status === 200) {
-                    return res.data.restaurantData
+                    return res.data.foodData
                 }
                 return res
             })

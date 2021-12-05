@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const endpoint = 'https://0ozp9hlr08.execute-api.us-east-2.amazonaws.com/dev/api/v1/restaurant'
+const endpoint = 'https://fac6su5da3.execute-api.us-east-2.amazonaws.com/dev/api/v1/restaurant'
 
 const get_restaurant = () => {
     const url = endpoint

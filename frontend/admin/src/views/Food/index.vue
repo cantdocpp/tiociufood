@@ -32,6 +32,7 @@ import Button from '@/components/Button'
 import Add from './components/add'
 
 import { get_restaurant } from '@/api/restaurant'
+import { get_food } from '@/api/food'
 
 export default {
     data() {
@@ -55,7 +56,7 @@ export default {
         }
     },
     async created() {
-        const tableData = await get_restaurant()
+        const tableData = await get_food()
         this.tableData = tableData
         this.isLoading = false
     },
