@@ -47,7 +47,8 @@ module.exports = {
                     "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
                 },
                 body: JSON.stringify({
-                    message: 'success add food review'
+                    message: 'success add food review',
+                    data: data
                 })
             }
         } catch(err) {
