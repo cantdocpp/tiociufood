@@ -127,7 +127,7 @@ module.exports = {
                     },
                     body: JSON.stringify({
                         message: 'success get recommendation',
-                        restaurantData: []
+                        recommendationData: []
                     })
                 }
             }
@@ -217,7 +217,7 @@ module.exports = {
                 },
                 body: JSON.stringify({
                     message: 'success get recommendation',
-                    restaurantData: foodRateArrSort
+                    recommendationData: foodRateArrSort
                 })
             }
         } catch(err) {
@@ -230,7 +230,7 @@ module.exports = {
                 },
                 body: JSON.stringify({
                     message: 'success get recommendation',
-                    restaurantData: err.message
+                    recommendationData: err.message
                 })
             }
         }
