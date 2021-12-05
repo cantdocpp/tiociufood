@@ -12,7 +12,7 @@ module.exports = {
         const { userEmail, restaurantName, reviews, username } = data
 
         try {
-            reviews.forEach(async (review) => {
+            for (const review of reviews) {
                 await docClient.put({
                     TableName: 'mainTable',
                     Item: {
@@ -37,7 +37,7 @@ module.exports = {
                         reviewContent: review.review
                     }
                 }).promise()
-            })
+            }
 
             return {
                 statusCode: 200,
