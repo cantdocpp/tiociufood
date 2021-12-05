@@ -14,10 +14,11 @@ module.exports = {
         try {
             const searchResult = await docClient.scan({
                 TableName: 'mainTable',
-                FilterExpression: 'begins_with(#identifier, :identifier) AND contains(#identifier, :search)',
+                FilterExpression: 'begins_with(#identifier, :identifier) AND contains(#identifier, :search) AND contains(#sk, :identifier)',
                 ProjectionExpression: 'restaurantName, restaurantAddress, restaurantThumbnail',
                 ExpressionAttributeNames: {
                     '#identifier': 'identifier',
+                    '#sk': 'sk'
                 },
                 ExpressionAttributeValues: {
                     ':identifier': 'RESTAURANT',
