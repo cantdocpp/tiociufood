@@ -117,6 +117,21 @@ module.exports = {
             const userItem = userReviewData.Items
             const trainingItem = trainingData.Items
 
+            if (userItem.length === 0) {
+                return {
+                    statusCode: 200,
+                    headers: {
+                        "Access-Control-Allow-Headers": "Content-Type",
+                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+                    },
+                    body: JSON.stringify({
+                        message: 'success get recommendation',
+                        restaurantData: []
+                    })
+                }
+            }
+
             const foodList = ['fu yung hai', 'ngohiong', 'sapo tahu', 'bistik babi', 'ifumie', 'lo mie', 'babi kecap', 'caysim cah', 'pak lay cah', 'mun tahu', 'kwetiaw sapi', 'khailan cah', 'babi kuluyuk', 'sapi cah', 'tahu kuah sayur asin', 'hie pien saos', 'cap cay cah', 'bubur babi', 'kodok cah', 'udang yam ha']
             let trainingObjects = {}
 
