@@ -127,8 +127,8 @@ module.exports = {
                 thumbnailKey: thumbnailFile.key,
                 bucket: originalFile.Bucket,
                 fileName: file.filename,
-                originalUrl: signedOriginalUrl,
-                thumbnailUrl: signedThumbnailUrl,
+                originalUrl: signedOriginalUrl.split('?')[0],
+                thumbnailUrl: signedThumbnailUrl.split('?')[0],
                 originalSize: file.content.byteLength
             }
 
