@@ -144,7 +144,8 @@ module.exports = {
                         restaurantThumbnail: image.thumbnailUrl.split('?')[0],
                         restaurantSchedule: restaurantSchedule,
                         restaurantAvgCost: restaurantAvgCost,
-                        restaurantFood: restaurantFood
+                        restaurantFood: restaurantFood,
+                        restaurantPhotos: []
                     }
                 }).promise()
                 
