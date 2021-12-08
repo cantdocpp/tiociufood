@@ -1,0 +1,33 @@
+service: uploader
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-2
+  stage: ${opt:stage, 'dev'}
+  timeout: 10
+  apiGateway:
+    binaryMediaTypes:
+      - "*/*"
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - s3:PutObject
+            - s3:GetObject
+            - s3:GetObjectVersion
+          Resource: "arn:aws:s3:::tiociufood/*"
+
+functions:
+  uploadImage:
+    handler: src/upload.handler
+    memorySize: 512
+    events:
+      - http:
+          path: /api/v1/uploader
+          method: post
+          cors: true
+
+plugins:
+  - serverless-offline
