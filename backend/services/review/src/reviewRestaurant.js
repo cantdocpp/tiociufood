@@ -39,7 +39,7 @@ module.exports = {
                 ExpressionAttributeValues: {
                     ':restaurantPhotos': reviewImages
                 }
-            })
+            }).promise()
 
             return {
                 statusCode: 200,
