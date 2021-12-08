@@ -119,7 +119,7 @@ module.exports = {
 
                 const signedOriginalUrl = s3.getSignedUrl("getObject", { Bucket: originalFile.Bucket, Key: originalKey, Expires: 60000 })
 
-                imageArr.push(signedOriginalUrl)
+                imageArr.push(signedOriginalUrl.split('?')[0])
             }
 
             return {
