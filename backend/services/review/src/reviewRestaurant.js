@@ -9,20 +9,37 @@ const docClient = new AWS.DynamoDB.DocumentClient({
 module.exports = {
     handler: async (event) => {
         const data = JSON.parse(event.body)
-        const { userEmail, restaurantName, rate, review } = data
+        const { userEmail, restaurantName, rate, review, foodReview, reviewImages } = data
 
         try {
             await docClient.put({
                 TableName: 'mainTable',
                 Item: {
                     identifier: `RESTAURANT#${restaurantName}`,
-                    sk: `REVIEW#${restaurantName}`,
+                    sk: `REVIEW#${userEmail}`,
                     restaurantName: restaurantName,
                     userEmail: userEmail,
                     reviewRate: rate,
-                    reviewContent: review
+                    restaurantReviewContent: review,
+                    foodReview: foodReview,
+                    reviewImages: reviewImages
                 }
             }).promise()
+
+            await docClient.update({
+                TableName: 'mainTable',
+                Key: {
+                    identifier: `RESTAURANT#r${restaurantName}`,
+                    sk: `RESTAURANT#r${restaurantName}`
+                },
+                UpdateExpression: 'ADD #restaurantPhotos = :restaurantPhotos',
+                ExpressionAttributeNames: {
+                    '#restaurantPhotos': 'restaurantPhotos'
+                },
+                ExpressionAttributeValues: {
+                    ':restaurantPhotos': reviewImages
+                }
+            })
 
             return {
                 statusCode: 200,
