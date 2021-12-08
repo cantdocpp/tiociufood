@@ -12,10 +12,26 @@
                 <Button @click="openModal">Add Food</Button>
             </Flex>
             <Spacer :y="70" />
-            <Table 
-                :headers="tableList"
-                :data="tableData"
-            />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="th">No.</th>
+                        <th class="th"> 
+                            Food Name
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(content, index) in tableData" :key="index">
+                        <td class="td"> {{ index + 1 }} </td>
+                        <td class="td"> 
+                            <router-link :to="{ name: 'FoodSimilarity', params: { foodName: getParams(content.foodName) } }">
+                                {{ content.foodName }}
+                            </router-link> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </Box>
     </Container>
 </template>
@@ -37,7 +53,6 @@ export default {
     data() {
         return {
             isLoading: true,
-            tableList: ['food name'],
             tableData: [],
             isAdd: false
         }
@@ -52,10 +67,14 @@ export default {
         addTableData(data) {
             this.tableData.push(data)
             this.isAdd = false
+        },
+        getParams(foodName) {
+            return foodName.split(' ').join('-')
         }
     },
     async created() {
         const tableData = await get_food()
+        console.log(tableData)
         this.tableData = tableData
         this.isLoading = false
     },
@@ -71,3 +90,20 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    .table {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .th {
+        text-transform: capitalize;
+    }
+
+    .td {
+        text-align: center;
+        padding: 5px 0;
+        word-wrap: break-word;
+    }
+</style>

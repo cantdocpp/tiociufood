@@ -26,9 +26,25 @@ const routes = [
     }
   },
   {
+    path: "/food/similarity/:foodName",
+    name: "FoodSimilarity",
+    component: () => import("../views/FoodSimilarity"),
+    meta: {
+      needAuth: true
+    }
+  },
+  {
     path: "/restaurant",
     name: "Restaurant",
     component: () => import("../views/Restaurant"),
+    meta: {
+      needAuth: true
+    }
+  },
+  {
+    path: "/training-data",
+    name: "TrainingData",
+    component: () => import("../views/TrainingData"),
     meta: {
       needAuth: true
     }
