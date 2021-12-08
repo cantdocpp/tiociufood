@@ -103,6 +103,8 @@ module.exports = {
             const formData = await parser(event, MAX_SIZE)
             const { files } = formData
 
+            console.log(files)
+
             const imageArr = []
 
             for (let i = 0; i < files.length; i++) {
@@ -144,7 +146,7 @@ module.exports = {
                 },
                 body: JSON.stringify({
                     message: 'failed upload image',
-                    error: JSON.parse(err.message)
+                    error: err.message
                 })
             }
         }
