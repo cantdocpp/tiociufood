@@ -180,7 +180,7 @@ module.exports = {
                 },
                 body: JSON.stringify({
                     message: 'success get food similarity',
-                    recommendationData: resArr
+                    similarityData: resArr
                 })
             }
         } catch(err) {
