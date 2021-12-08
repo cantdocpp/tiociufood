@@ -146,7 +146,7 @@ module.exports = {
                 },
                 body: JSON.stringify({
                     message: 'failed upload image',
-                    error: err.message
+                    error: JSON.stringify(err.message)
                 })
             }
         }
