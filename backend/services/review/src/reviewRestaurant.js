@@ -32,7 +32,7 @@ module.exports = {
                     identifier: `RESTAURANT#${restaurantName}`,
                     sk: `RESTAURANT#${restaurantName}`
                 },
-                UpdateExpression: 'ADD #restaurantPhotos = :restaurantPhotos',
+                UpdateExpression: 'SET #restaurantPhotos = list_append(#restaurantPhotos, :restaurantPhotos)',
                 ExpressionAttributeNames: {
                     '#restaurantPhotos': 'restaurantPhotos'
                 },
