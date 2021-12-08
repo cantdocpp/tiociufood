@@ -29,8 +29,8 @@ module.exports = {
             await docClient.update({
                 TableName: 'mainTable',
                 Key: {
-                    identifier: `RESTAURANT#r${restaurantName}`,
-                    sk: `RESTAURANT#r${restaurantName}`
+                    identifier: `RESTAURANT#${restaurantName}`,
+                    sk: `RESTAURANT#${restaurantName}`
                 },
                 UpdateExpression: 'ADD #restaurantPhotos = :restaurantPhotos',
                 ExpressionAttributeNames: {
