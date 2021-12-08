@@ -110,12 +110,9 @@ module.exports = {
 
                 const uid = uuidv4()
                 const originalKey = `${uid}_original_${file.filename}`
-                const thumbnailKey = `${uid}_thumbnail_${file.filename}`
 
-                const fileResizedBuffer = await resize( file.content, file.contentType, 460)
-                const [originalFile, thumbnailFile] = await Promise.all([
-                    uploadToS3(bucket, originalKey, file.content, file.contentType),
-                    uploadToS3(bucket, thumbnailKey, fileResizedBuffer, file.contentType)
+                const [originalFile] = await Promise.all([
+                    uploadToS3(bucket, originalKey, file.content, file.contentType)
                 ])
 
                 const signedOriginalUrl = s3.getSignedUrl("getObject", { Bucket: originalFile.Bucket, Key: originalKey, Expires: 60000 })
