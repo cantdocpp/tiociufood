@@ -40,6 +40,19 @@ module.exports = {
                 }
               }).promise()
 
+              const reviewList = await docClient.query({
+                TableName: 'mainTable',
+                KeyConditionExpression: '#identifier = :identifier AND begins_with(#sk, :sk)',
+                ExpressionAttributeNames: {
+                    '#identifier': 'identifier',
+                    '#sk': 'sk'
+                },
+                ExpressionAttributeValues: {
+                    ':identifier': `FOOD#${nameQuery}`,
+                    ':sk': 'REVIEW'
+                }
+              }).promise()
+
             return {
                 statusCode: 200,
                 headers: {
@@ -50,6 +63,7 @@ module.exports = {
                 body: JSON.stringify({
                     message: 'success get food detail',
                     foodDetailData: foodDetail,
+                    foodReview: reviewList,
                     restaurantData: restaurantList
                 })
             }
