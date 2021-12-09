@@ -29,7 +29,7 @@ module.exports = {
             const restaurantList = await docClient.scan({
                 TableName: 'mainTable',
                 FilterExpression: 'begins_with(#identifier, :identifier) AND contains(#sk, :sk)',
-                ProjectionExpression: 'restaurantName, restaurantAddress, restaurantImage',
+                ProjectionExpression: 'restaurantName, restaurantAddress, restaurantImage, restaurantFood',
                 ExpressionAttributeNames: {
                     '#identifier': 'identifier',
                     '#sk': 'sk'
