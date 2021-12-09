@@ -22,7 +22,8 @@ module.exports = {
                     "sk": `USER#${email}`,
                     "email": email,
                     "username": username,
-                    "password": hashedPassword
+                    "password": hashedPassword,
+                    "profileImage": 'https://tiociufood.s3.us-east-2.amazonaws.com/3d9066fd-e644-40b9-92e1-7fc9aeca285d_original_user-image.jpg'
                 }
             }).promise()
             return {
