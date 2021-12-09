@@ -33,7 +33,7 @@ module.exports = {
               },
               body: JSON.stringify({
                   message: 'success get restaurant review',
-                  restaurantData: restaurantReview.Items
+                  reviewData: restaurantReview.Items
               })
             }
           } catch(err) {
