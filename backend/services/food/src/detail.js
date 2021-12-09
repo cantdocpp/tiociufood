@@ -40,16 +40,17 @@ module.exports = {
                 }
               }).promise()
 
-              const reviewList = await docClient.query({
+              const foodList = await docClient.scan({
                 TableName: 'mainTable',
-                KeyConditionExpression: '#identifier = :identifier AND begins_with(#sk, :sk)',
+                FilterExpression: 'begins_with(#identifier, :identifier) AND contains(#sk, :sk)',
+                ProjectionExpression: 'foodName',
                 ExpressionAttributeNames: {
                     '#identifier': 'identifier',
                     '#sk': 'sk'
                 },
                 ExpressionAttributeValues: {
-                    ':identifier': `FOOD#${nameQuery}`,
-                    ':sk': 'REVIEW'
+                    ':identifier': 'FOOD',
+                    ':sk': 'FOOD'
                 }
               }).promise()
 
@@ -63,7 +64,7 @@ module.exports = {
                 body: JSON.stringify({
                     message: 'success get food detail',
                     foodDetailData: foodDetail,
-                    foodReview: reviewList,
+                    foodData: foodList,
                     restaurantData: restaurantList
                 })
             }
