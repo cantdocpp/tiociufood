@@ -171,7 +171,7 @@ module.exports = {
                 }
             })
 
-            const resArrSort = foodRateArr.sort((a, b) => b[2] - a[2])
+            const resArrSort = resArr.sort((a, b) => b[2] - a[2])
 
             return {
                 statusCode: 200,
