@@ -13,7 +13,7 @@ module.exports = {
         try {
             const restaurantReview = await docClient.query({
               TableName: 'mainTable',
-              FilterExpression: '#identifier = :identifier AND contains(#sk, :sk)',
+              KeyConditionExpression: '#identifier = :identifier AND contains(#sk, :sk)',
               ExpressionAttributeNames: {
                   '#identifier': 'identifier',
                   '#sk': 'sk'
