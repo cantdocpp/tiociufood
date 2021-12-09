@@ -8,8 +8,9 @@ const docClient = new AWS.DynamoDB.DocumentClient({
 
 module.exports = {
     handler: async (event) => {
-        const data = JSON.parse(event.body)
-        const { foodName } = data
+        const { name } = event.pathParameters
+
+        const nameQuery = name.split('-').join(' ')
 
         try {
             const foodDetail = await docClient.query({
@@ -20,8 +21,8 @@ module.exports = {
                     '#sk': 'sk'
                 },
                 ExpressionAttributeValues: {
-                    ':identifier': `FOOD#${foodName}`,
-                    ':sk': `FOOD#${foodName}`
+                    ':identifier': `FOOD#${nameQuery}`,
+                    ':sk': `FOOD#${nameQuery}`
                 }
             }).promise()
 
