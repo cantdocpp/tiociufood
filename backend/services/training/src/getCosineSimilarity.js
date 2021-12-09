@@ -171,6 +171,8 @@ module.exports = {
                 }
             })
 
+            const resArrSort = foodRateArr.sort((a, b) => b[2] - a[2])
+
             return {
                 statusCode: 200,
                 headers: {
@@ -180,7 +182,7 @@ module.exports = {
                 },
                 body: JSON.stringify({
                     message: 'success get food similarity',
-                    similarityData: resArr
+                    similarityData: resArrSort
                 })
             }
         } catch(err) {
