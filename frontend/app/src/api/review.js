@@ -14,6 +14,7 @@ const add_review_restaurant = (data) => {
                 return res
             })
             .catch(err => {
+                console.log(err.response)
                 return err
             })
 }

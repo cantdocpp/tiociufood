@@ -63,6 +63,7 @@ export default {
     },
     methods: {
         handleUpload(event) {
+            console.log(event.target.files)
             this.form.foodImage = event.target.files[0]
         },
         async submit() {

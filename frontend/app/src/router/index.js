@@ -73,7 +73,17 @@ const routes = [
       accessWithAuth: true,
       showNavbar: true
     }
-  }
+  },
+  {
+    path: "/about-us",
+    name: "About",
+    component: () => import("../views/About"),
+    meta: {
+      needAuth: false,
+      accessWithAuth: true,
+      showNavbar: false
+    }
+  },
 ];
 
 const router = createRouter({

@@ -14,6 +14,12 @@
                         </Text>
                     </NavLink>
                     <Spacer :margin-left="20" />
+                    <NavLink to="/about-us">
+                        <Text :size="18">
+                            About Us
+                        </Text>
+                    </NavLink>
+                    <Spacer :margin-left="20" />
                     <LoggedInOnly>
                         <NavLink to="/recommendation">
                             <Text :size="18">
