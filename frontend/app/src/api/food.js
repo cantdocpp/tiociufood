@@ -18,6 +18,23 @@ const get_food = () => {
             })
 }
 
+const get_food_detail = (foodName) => {
+    const url = endpoint + `/${foodName}`
+
+    return axios
+            .get(url)
+            .then(res => {
+                if (res.status === 200) {
+                    return res.data
+                }
+                return res
+            })
+            .catch(err => {
+                return err
+            })
+}
+
 export {
-    get_food
+    get_food,
+    get_food_detail
 }

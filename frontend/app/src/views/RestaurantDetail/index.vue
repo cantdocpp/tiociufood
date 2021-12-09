@@ -49,6 +49,13 @@
                     </Box>
                 </Stack>
             </Box>
+            <Spacer :margin-top="30" />
+            <Box>
+                <Title :size="25">
+                    User Review
+                </Title>
+                <Review :restaurant-name="restaurant.restaurantName" />
+            </Box>
         </Container>
         <Container v-if="isLoading">
             loading...
@@ -58,6 +65,7 @@
 
 <script>
 import ReviewModal from './components/ReviewModal'
+import Review from './components/Review'
 
 import Title from '@/components/Title'
 import Text from '@/components/Text'
@@ -86,7 +94,7 @@ export default {
                 return this.restaurant.restaurantPhotos
             }
             const photos = []
-            for (let i = 0; i < 6; i++) {
+            for (let i = 0; i < 5; i++) {
                 photos.push(this.restaurant.restaurantPhotos[i])
             }
             return photos
@@ -98,6 +106,7 @@ export default {
         },
         closeModal() {
             this.isReview = false
+            this.$router.go()
         }
     },
     async created() {
@@ -111,6 +120,7 @@ export default {
     },
     components: {
         ReviewModal,
+        Review,
         Title,
         Text,
         Button,

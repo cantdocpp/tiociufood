@@ -84,6 +84,16 @@ const routes = [
       showNavbar: false
     }
   },
+  {
+    path: "/food/:foodName",
+    name: "FoodDetail",
+    component: () => import("../views/FoodDetail"),
+    meta: {
+      needAuth: false,
+      accessWithAuth: true,
+      showNavbar: true
+    }
+  },
 ];
 
 const router = createRouter({

@@ -3,19 +3,23 @@
         <Container>
             <Spacer :margin-top="20" />
             <Box v-if="!loading">
-                <Box v-if="recommendation">
+                <Box v-if="recommendation.length > 0">
                     <Title :size="25">
                         Recommended for you
                     </Title>
                     <Spacer :margin-top="30" />
                     <ul>
                         <li v-for="(rec, index) in getRecommendations" :key="index">
-                            {{ rec }}
+                            <router-link :to="{ name: 'FoodDetail', params: { foodName: getFoodNameUrl(rec) } }">
+                                {{ rec }}
+                            </router-link>
                         </li>
                     </ul>
                 </Box>
-                <Box v-if="!recommendation">
-                    You have no recommendation, please rate food and restaurant
+                <Box v-if="recommendation.length === 0">
+                    <Title :size="20">
+                        You have no recommendation, please rate food and restaurant
+                    </Title>
                 </Box>
             </Box>
             <Box v-if="loading">
@@ -44,12 +48,15 @@ export default {
     computed: {
         getRecommendations() {
             const rec = []
-            this.recommendation.forEach(food => {
-                if (food.foodRate > 0) {
-                    rec.push(food.foodName)
-                }
-            })
+            for (let i = 0; i < 5; i++) {
+                rec.push(this.recommendation[i].foodName)
+            }
             return rec
+        }
+    },
+    methods: {
+        getFoodNameUrl(foodName) {
+            return foodName.split(' ').join('-')
         }
     },
     async created() {
@@ -71,4 +78,3 @@ export default {
     }
 }
 </script>
-

@@ -37,7 +37,25 @@ const add_review_food = (data) => {
             })
 }
 
+const get_restaurant_reviews = (data) => {
+    const url = endpoint + '/restaurant'
+
+    return axios
+            .post(url, data)
+            .then(res => {
+                if (res.status === 200) {
+                    return res.data
+                }
+                return res
+            })
+            .catch(err => {
+                console.log(err.response)
+                return err
+            })
+}
+
 export {
     add_review_restaurant,
-    add_review_food
+    add_review_food,
+    get_restaurant_reviews
 }

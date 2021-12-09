@@ -180,14 +180,18 @@ export default {
             const restaurantName = this.$route.params.restaurantName.split('-').join(' ')
             const userState = this.$store.getters.userStateData
             const userEmail = userState.email
+            const username = userState.username
             const userRestaurant = JSON.parse(JSON.stringify(this.form.restaurant))
             const foodReview = JSON.parse(JSON.stringify(this.form.foods))
+            const time = Date.now()
 
             const restaurantData = {
                 restaurantName: restaurantName,
                 userEmail: userEmail,
                 foodReview: foodReview,
                 reviewImages: this.uploadImageLinks,
+                username: username,
+                time: time,
                 ...userRestaurant
             }
 
@@ -230,7 +234,6 @@ export default {
             reader.readAsDataURL(file);
         },
         fileChange(files) {
-            console.log('files: ', files)
             this.uploadedImage = files
             const uploadedImageTotal = files.length;
             for (let i = 0; i < uploadedImageTotal; i++) {
