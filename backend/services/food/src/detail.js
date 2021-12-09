@@ -40,7 +40,20 @@ module.exports = {
                 }
               }).promise()
 
-              const foodList = await docClient.scan({
+            const reviewList = await docClient.query({
+                TableName: 'mainTable',
+                KeyConditionExpression: '#identifier = :identifier AND begins_with(#sk, :sk)',
+                ExpressionAttributeNames: {
+                    '#identifier': 'identifier',
+                    '#sk': 'sk'
+                },
+                ExpressionAttributeValues: {
+                    ':identifier': `FOOD#${nameQuery}`,
+                    ':sk': 'REVIEW'
+                }
+            }).promise()
+
+            const foodList = await docClient.scan({
                 TableName: 'mainTable',
                 FilterExpression: 'begins_with(#identifier, :identifier) AND contains(#sk, :sk)',
                 ProjectionExpression: 'foodName, foodImage',
@@ -52,7 +65,7 @@ module.exports = {
                     ':identifier': 'FOOD',
                     ':sk': 'FOOD'
                 }
-              }).promise()
+            }).promise()
 
             return {
                 statusCode: 200,
@@ -65,6 +78,7 @@ module.exports = {
                     message: 'success get food detail',
                     foodDetailData: foodDetail,
                     foodData: foodList,
+                    foodReview: reviewList,
                     restaurantData: restaurantList
                 })
             }
