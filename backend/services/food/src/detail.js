@@ -43,7 +43,7 @@ module.exports = {
               const foodList = await docClient.scan({
                 TableName: 'mainTable',
                 FilterExpression: 'begins_with(#identifier, :identifier) AND contains(#sk, :sk)',
-                ProjectionExpression: 'foodName',
+                ProjectionExpression: 'foodName, foodImage',
                 ExpressionAttributeNames: {
                     '#identifier': 'identifier',
                     '#sk': 'sk'
