@@ -9,7 +9,7 @@ const docClient = new AWS.DynamoDB.DocumentClient({
 module.exports = {
     handler: async (event) => {
         const data = JSON.parse(event.body)
-        const { userEmail, restaurantName, rate, review, foodReview, reviewImages } = data
+        const { userEmail, username, restaurantName, rate, review, foodReview, reviewImages } = data
 
         try {
             await docClient.put({
@@ -19,6 +19,7 @@ module.exports = {
                     sk: `REVIEW#${userEmail}`,
                     restaurantName: restaurantName,
                     userEmail: userEmail,
+                    username: username,
                     reviewRate: rate,
                     restaurantReviewContent: review,
                     foodReview: foodReview,
