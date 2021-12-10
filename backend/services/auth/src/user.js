@@ -133,7 +133,7 @@ module.exports = {
             }
         }
     },
-    get: async (event) => {
+    get: async () => {
         try {
             const userList = await docClient.scan({
                 TableName: 'mainTable',
@@ -158,7 +158,7 @@ module.exports = {
                 },
                 body: JSON.stringify({
                     message: 'success get user',
-                    restaurantData: userList.Items
+                    userData: userList.Items
                 })
             }
         } catch(err) {

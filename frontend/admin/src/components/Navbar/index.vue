@@ -12,6 +12,11 @@
                 :x="10" 
             />
             <Link to="training-data">Training Data</Link>
+            <Spacer 
+                display="inline"
+                :x="10" 
+            />
+            <Link to="user">Pengguna</Link>
         </Box>
     </Container>
 </template>
