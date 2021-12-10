@@ -57,6 +57,14 @@ const routes = [
       needAuth: true
     }
   },
+  {
+    path: "/user/:userName",
+    name: "UserDetail",
+    component: () => import("../views/UserDetail"),
+    meta: {
+      needAuth: true
+    }
+  },
 ];
 
 const router = createRouter({

@@ -9,17 +9,21 @@
                     <tr>
                         <th class="th">No.</th>
                         <th class="th"> 
-                            User Email
+                            Food Name
+                        </th>
+                        <th class="th"> 
+                            Food Rate
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(content, index) in userData" :key="index">
+                    <tr v-for="(recommendation, index) in recommendations" :key="index">
                         <td class="td"> {{ index + 1 }} </td>
                         <td class="td"> 
-                            <router-link :to="{ name: 'UserDetail', params: { userName: content.email } }">
-                                {{ content.email }}
-                            </router-link> 
+                            {{ recommendation.foodName }}
+                        </td>
+                        <td class="td">
+                            {{ recommendation.foodRate }}
                         </td>
                     </tr>
                 </tbody>
@@ -38,19 +42,28 @@ import Loading from '@/components/Loading'
 import Flex from '@/components/Flex'
 import Button from '@/components/Button'
 
-import { get_all_user } from '@/api/user'
+import { get_user_detail } from '@/api/user'
+import { get_recommendation } from '@/api/recommendation'
 
 export default {
     data() {
         return {
             isLoading: true,
-            userData: []
+            recommendations: []
         }
     },
     async created() {
-        const res = await get_all_user()
-        this.userData = res.userData
-        console.log(this.userData)
+        const params = this.$route.params.userName
+        const userDetail = await get_user_detail({
+            email: params
+        })
+        const email = params
+        const username = userDetail.userData.Items[0].username
+        const recommendation = await get_recommendation({
+            email: email,
+            username: username
+        })
+        this.recommendations = recommendation.recommendationData
         this.isLoading = false
     },
     components: {
