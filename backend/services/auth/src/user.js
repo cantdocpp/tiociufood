@@ -132,5 +132,48 @@ module.exports = {
                 })
             }
         }
+    },
+    get: async (event) => {
+        try {
+            const userList = await docClient.scan({
+                TableName: 'mainTable',
+                FilterExpression: 'begins_with(#identifier, :identifier) AND contains(#sk, :sk)',
+                ProjectionExpression: 'restaurantName, restaurantAddress, restaurantThumbnail',
+                ExpressionAttributeNames: {
+                    '#identifier': 'identifier',
+                    '#sk': 'sk'
+                },
+                ExpressionAttributeValues: {
+                    ':identifier': 'USER',
+                    ':sk': 'USER'
+                }
+            }).promise()
+
+            return {
+                statusCode: 200,
+                headers: {
+                    "Access-Control-Allow-Headers": "Content-Type",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+                },
+                body: JSON.stringify({
+                    message: 'success get user',
+                    restaurantData: userList.Items
+                })
+            }
+        } catch(err) {
+            return {
+                statusCode: 500,
+                headers: {
+                    "Access-Control-Allow-Headers": "Content-Type",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+                },
+                body: JSON.stringify({
+                    message: 'something is wrong on the server',
+                    error: JSON.stringify(err.message)
+                })
+            }
+        }
     }
 }
