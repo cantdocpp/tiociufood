@@ -137,8 +137,8 @@ module.exports = {
         try {
             const userList = await docClient.scan({
                 TableName: 'mainTable',
-                FilterExpression: 'begins_with(#identifier, :identifier) AND contains(#sk, :sk)',
-                ProjectionExpression: 'restaurantName, restaurantAddress, restaurantThumbnail',
+                FilterExpression: 'begins_with(#identifier, :identifier) AND begins_with(#sk, :sk)',
+                ProjectionExpression: 'username',
                 ExpressionAttributeNames: {
                     '#identifier': 'identifier',
                     '#sk': 'sk'
