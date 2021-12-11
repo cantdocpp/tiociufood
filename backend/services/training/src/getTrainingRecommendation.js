@@ -126,7 +126,7 @@ module.exports = {
                         "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
                     },
                     body: JSON.stringify({
-                        message: 'success get recommendation',
+                        message: 'success get empty recommendation',
                         recommendationData: []
                     })
                 }
@@ -209,6 +209,7 @@ module.exports = {
 
             const foodRateArr = getUserFoodRate(userOjbect, foodList, endCosineData)
             const foodRateArrSort = foodRateArr.sort((a, b) => b.foodRate - a.foodRate)
+
             return {
                 statusCode: 200,
                 headers: {
