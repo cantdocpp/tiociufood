@@ -28,7 +28,21 @@ const get_food_similarity = (data) => {
             })
 }
 
+const get_training_recommendation = (data) => {
+    const url = endpoint + '/recommendation'
+
+    return axios
+            .post(url, data)
+            .then(res => {
+                return res.data
+            })
+            .catch(err => {
+                console.log(err.response)
+            })
+}
+
 export {
     get_food_similarity,
-    get_training_data
+    get_training_data,
+    get_training_recommendation
 }

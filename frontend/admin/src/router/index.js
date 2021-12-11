@@ -65,6 +65,14 @@ const routes = [
       needAuth: true
     }
   },
+  {
+    path: "/training-data/:name",
+    name: "TrainingDataRecommendation",
+    component: () => import("../views/TrainingRecommendation"),
+    meta: {
+      needAuth: true
+    }
+  },
 ];
 
 const router = createRouter({
