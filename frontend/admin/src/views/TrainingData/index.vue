@@ -18,9 +18,9 @@
                     <tbody>
                         <tr v-for="(content, index) in tableData" :key="index">
                             <td class="td">
-                                <router-link :to="{ name: 'TrainingDataRecommendation', params: { name: getNameDash(content.name) } }">
+                                <!-- <router-link :to="{ name: 'TrainingDataRecommendation', params: { name: getNameDash(content.name) } }"> -->
                                     {{ content.name }} 
-                                </router-link>
+                                <!-- </router-link> -->
                             </td>
                             <td class="td" v-for="(review, contentIndex) in content.reviews" :key="contentIndex">
                                 {{ review.foodRate }}

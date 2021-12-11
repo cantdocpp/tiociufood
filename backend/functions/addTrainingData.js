@@ -33,7 +33,7 @@ const requestJson1 = {
                                 'foodRate': 3
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 3
                             },
                             {
@@ -45,7 +45,7 @@ const requestJson1 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 4
                             },
                             {
@@ -122,7 +122,7 @@ const requestJson1 = {
                                 'foodRate': 3
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 3
                             },
                             {
@@ -134,7 +134,7 @@ const requestJson1 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 0
                             },
                             {
@@ -211,7 +211,7 @@ const requestJson1 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 4
                             },
                             {
@@ -223,7 +223,7 @@ const requestJson1 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 5
                             },
                             {
@@ -300,7 +300,7 @@ const requestJson1 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 5
                             },
                             {
@@ -312,7 +312,7 @@ const requestJson1 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 3
                             },
                             {
@@ -389,7 +389,7 @@ const requestJson1 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 5
                             },
                             {
@@ -401,7 +401,7 @@ const requestJson1 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 4
                             },
                             {
@@ -478,7 +478,7 @@ const requestJson1 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 5
                             },
                             {
@@ -490,7 +490,7 @@ const requestJson1 = {
                                 'foodRate': 0
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 4
                             },
                             {
@@ -567,7 +567,7 @@ const requestJson1 = {
                                 'foodRate': 3
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 3
                             },
                             {
@@ -579,7 +579,7 @@ const requestJson1 = {
                                 'foodRate': 1
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 1
                             },
                             {
@@ -656,7 +656,7 @@ const requestJson1 = {
                                 'foodRate': 0
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 4
                             },
                             {
@@ -668,7 +668,7 @@ const requestJson1 = {
                                 'foodRate': 2
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 3
                             },
                             {
@@ -745,7 +745,7 @@ const requestJson1 = {
                                 'foodRate': 3
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 3
                             },
                             {
@@ -757,7 +757,7 @@ const requestJson1 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 3
                             },
                             {
@@ -834,7 +834,7 @@ const requestJson1 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 3
                             },
                             {
@@ -846,7 +846,7 @@ const requestJson1 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 3
                             },
                             {
@@ -923,7 +923,7 @@ const requestJson1 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 5
                             },
                             {
@@ -935,7 +935,7 @@ const requestJson1 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 5
                             },
                             {
@@ -1012,7 +1012,7 @@ const requestJson1 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 5
                             },
                             {
@@ -1024,7 +1024,7 @@ const requestJson1 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 4
                             },
                             {
@@ -1101,7 +1101,7 @@ const requestJson1 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 4
                             },
                             {
@@ -1113,7 +1113,7 @@ const requestJson1 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 3
                             },
                             {
@@ -1190,7 +1190,7 @@ const requestJson1 = {
                                 'foodRate': 0
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 0
                             },
                             {
@@ -1202,7 +1202,7 @@ const requestJson1 = {
                                 'foodRate': 2
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 4
                             },
                             {
@@ -1279,7 +1279,7 @@ const requestJson1 = {
                                 'foodRate': 3
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 3
                             },
                             {
@@ -1291,7 +1291,7 @@ const requestJson1 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 5
                             },
                             {
@@ -1368,7 +1368,7 @@ const requestJson1 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 5
                             },
                             {
@@ -1380,7 +1380,7 @@ const requestJson1 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 4
                             },
                             {
@@ -1457,7 +1457,7 @@ const requestJson1 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 5
                             },
                             {
@@ -1469,7 +1469,7 @@ const requestJson1 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 5
                             },
                             {
@@ -1553,7 +1553,7 @@ const requestJson2 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 4
                             },
                             {
@@ -1565,7 +1565,7 @@ const requestJson2 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 2
                             },
                             {
@@ -1642,7 +1642,7 @@ const requestJson2 = {
                                 'foodRate': 2
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 4
                             },
                             {
@@ -1654,7 +1654,7 @@ const requestJson2 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 3
                             },
                             {
@@ -1731,7 +1731,7 @@ const requestJson2 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 5
                             },
                             {
@@ -1743,7 +1743,7 @@ const requestJson2 = {
                                 'foodRate': 1
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 1
                             },
                             {
@@ -1820,7 +1820,7 @@ const requestJson2 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 5
                             },
                             {
@@ -1832,7 +1832,7 @@ const requestJson2 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 4
                             },
                             {
@@ -1909,7 +1909,7 @@ const requestJson2 = {
                                 'foodRate': 3
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 3
                             },
                             {
@@ -1921,7 +1921,7 @@ const requestJson2 = {
                                 'foodRate': 3
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 3
                             },
                             {
@@ -1998,7 +1998,7 @@ const requestJson2 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 5
                             },
                             {
@@ -2010,7 +2010,7 @@ const requestJson2 = {
                                 'foodRate': 3
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 3
                             },
                             {
@@ -2087,7 +2087,7 @@ const requestJson2 = {
                                 'foodRate': 3
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 4
                             },
                             {
@@ -2099,7 +2099,7 @@ const requestJson2 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 3
                             },
                             {
@@ -2176,7 +2176,7 @@ const requestJson2 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 5
                             },
                             {
@@ -2188,7 +2188,7 @@ const requestJson2 = {
                                 'foodRate': 3
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 3
                             },
                             {
@@ -2265,7 +2265,7 @@ const requestJson2 = {
                                 'foodRate': 3
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 2
                             },
                             {
@@ -2277,7 +2277,7 @@ const requestJson2 = {
                                 'foodRate': 3
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 2
                             },
                             {
@@ -2354,7 +2354,7 @@ const requestJson2 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 4
                             },
                             {
@@ -2366,7 +2366,7 @@ const requestJson2 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 5
                             },
                             {
@@ -2443,7 +2443,7 @@ const requestJson2 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 5
                             },
                             {
@@ -2455,7 +2455,7 @@ const requestJson2 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 5
                             },
                             {
@@ -2532,7 +2532,7 @@ const requestJson2 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 4
                             },
                             {
@@ -2544,7 +2544,7 @@ const requestJson2 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 4
                             },
                             {
@@ -2621,7 +2621,7 @@ const requestJson2 = {
                                 'foodRate': 0
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 5
                             },
                             {
@@ -2633,7 +2633,7 @@ const requestJson2 = {
                                 'foodRate': 0
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 0
                             },
                             {
@@ -2710,7 +2710,7 @@ const requestJson2 = {
                                 'foodRate': 5
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 4
                             },
                             {
@@ -2722,7 +2722,7 @@ const requestJson2 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 4
                             },
                             {
@@ -2799,7 +2799,7 @@ const requestJson2 = {
                                 'foodRate': 3
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 4
                             },
                             {
@@ -2811,7 +2811,7 @@ const requestJson2 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 4
                             },
                             {
@@ -2888,7 +2888,7 @@ const requestJson2 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 4
                             },
                             {
@@ -2900,7 +2900,7 @@ const requestJson2 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 4
                             },
                             {
@@ -2977,7 +2977,7 @@ const requestJson2 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 4
                             },
                             {
@@ -2989,7 +2989,7 @@ const requestJson2 = {
                                 'foodRate': 2
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 0
                             },
                             {
@@ -3066,7 +3066,7 @@ const requestJson2 = {
                                 'foodRate': 0
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 1
                             },
                             {
@@ -3078,7 +3078,7 @@ const requestJson2 = {
                                 'foodRate': 4
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 0
                             },
                             {
@@ -3155,7 +3155,7 @@ const requestJson2 = {
                                 'foodRate': 0
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 0
                             },
                             {
@@ -3167,7 +3167,7 @@ const requestJson2 = {
                                 'foodRate': 0
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 0
                             },
                             {
@@ -3244,7 +3244,7 @@ const requestJson2 = {
                                 'foodRate': 0
                             },
                             {
-                                'foodName': 'lomie',
+                                'foodName': 'lo mie',
                                 'foodRate': 1
                             },
                             {
@@ -3256,7 +3256,7 @@ const requestJson2 = {
                                 'foodRate': 0
                             },
                             {
-                                'foodName': 'paklay cah',
+                                'foodName': 'pak lay cah',
                                 'foodRate': 0
                             },
                             {
@@ -3313,7 +3313,7 @@ const requestJson2 = {
 
 async function run() {
     try {
-        const res = await docClient.batchWrite(requestJson2).promise()
+        const res = await docClient.batchWrite(requestJson1).promise()
         console.log(res)
     } catch(err) {
         console.log(err)
