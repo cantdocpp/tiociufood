@@ -7,6 +7,10 @@
             </Box>
             <Box v-if="!loading">
                 <Box v-if="restaurants.length > 0">
+                    <Title :size="25">
+                        Search results for "{{ getSearchQuery }}"
+                    </Title>
+                    <Spacer :margin-top="20" />
                     <Grid 
                         template-columns="repeat(4, 1fr)"
                         :column-gap="30"
@@ -41,6 +45,7 @@ import { get_search_result } from '@/api/search'
 
 import Link from '@/components/Link'
 import Text from '@/components/Text'
+import Title from '@/components/Title'
 import RestaurantCard from '@/components/RestaurantCard'
 
 import Container from '@/layouts/Container'
@@ -53,6 +58,11 @@ export default {
         return {
             restaurants: [],
             loading: true
+        }
+    },
+    computed: {
+        getSearchQuery() {
+            return this.$route.query.restaurant
         }
     },
     methods: {
@@ -72,6 +82,7 @@ export default {
     components: {
         Link,
         Text,
+        Title,
         RestaurantCard,
         Container,
         Spacer,

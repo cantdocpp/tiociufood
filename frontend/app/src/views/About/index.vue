@@ -21,7 +21,7 @@
                         </div>
                         <div class="about__who__line"></div>
                         <div class="about__who__desc">
-                            Launch in 2021, Tiociufood is an technology platform that gives user some chinese food recommendation. User on our platform can discover restaurants, foods, read and write other user reviews, and check details regarding restaurants. On the other hands, our platform also giving user some food recommendation based on their tastes and reviews, in order to maximize their outputs.
+                            Launch in 2021 and inspired by Zomato.com Tiociufood is an technology platform that gives user some chinese food recommendation. User on our platform can discover restaurants, foods, read and write other user reviews, and check details regarding restaurants. On the other hands, our platform also giving user some food recommendation based on their tastes and reviews, in order to maximize their outputs.
                         </div>
                     </div>
                     <div class="about__who__image__wrapper">
