@@ -73,6 +73,14 @@ const routes = [
       needAuth: true
     }
   },
+  {
+    path: "/test-method",
+    name: "TestMethod",
+    component: () => import("../views/TestMethod"),
+    meta: {
+      needAuth: true
+    }
+  },
 ];
 
 const router = createRouter({

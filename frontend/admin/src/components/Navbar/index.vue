@@ -17,6 +17,11 @@
                 :x="10" 
             />
             <Link to="user">Pengguna</Link>
+            <Spacer 
+                display="inline"
+                :x="10" 
+            />
+            <Link to="test-method">test metode</Link>
         </Box>
     </Container>
 </template>
