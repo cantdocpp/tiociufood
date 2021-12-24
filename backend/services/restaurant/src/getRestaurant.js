@@ -11,7 +11,7 @@ module.exports = {
         try {
             const restaurantSearchResult = await docClient.scan({
               TableName: 'mainTable',
-              FilterExpression: 'begins_with(#identifier, :identifier) AND contains(#sk, :sk)',
+              FilterExpression: 'begins_with(#identifier, :identifier) AND #sk < :sk',
               ProjectionExpression: 'restaurantName, restaurantAddress, restaurantThumbnail',
               ExpressionAttributeNames: {
                   '#identifier': 'identifier',
@@ -19,9 +19,12 @@ module.exports = {
               },
               ExpressionAttributeValues: {
                   ':identifier': 'RESTAURANT',
-                  ':sk': 'RESTAURANT'
-              }
+                  ':sk': 'RESTAURANT$'
+              },
+              Limit: 5
             }).promise()
+
+            console.log(restaurantSearchResult, '_________________')
             
             return {
               statusCode: 200,
