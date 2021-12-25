@@ -20,11 +20,8 @@ module.exports = {
               ExpressionAttributeValues: {
                   ':identifier': 'RESTAURANT',
                   ':sk': 'RESTAURANT$'
-              },
-              Limit: 5
+              }
             }).promise()
-
-            console.log(restaurantSearchResult, '_________________')
             
             return {
               statusCode: 200,
