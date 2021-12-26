@@ -21,11 +21,15 @@
                     </NavLink>
                     <Spacer :margin-left="20" />
                     <LoggedInOnly>
-                        <NavLink to="/recommendation">
-                            <Text :size="18">
-                                Recommendation
-                            </Text>
-                        </NavLink>
+                        <Flex>
+                            <NavLink to="/recommendation">
+                                <Text :size="18">
+                                    Recommendation
+                                </Text>
+                            </NavLink>
+                            <Spacer :margin-left="20" />
+                            <span class="nav__logout" @click="logout">Log Out</span>
+                        </Flex>
                     </LoggedInOnly>
                     <!-- <Spacer :margin-right="20" /> -->
                     <NotLoggedIn>
@@ -72,6 +76,15 @@ export default {
             return this.$route.meta.showNavbar
         }
     },
+    methods: {
+        logout() {
+            localStorage.removeItem('access_token')
+            this.$store.dispatch('logout')
+            this.$router.push({
+                name: 'Login'
+            })
+        }
+    },
     components: {
         Box,
         Flex,
@@ -91,5 +104,11 @@ export default {
         width: 100%;
         height: 60px;
         box-sizing: border-box;
+    }
+
+    .nav__logout {
+        font-size: 18px;
+        cursor: pointer;
+        user-select: none;
     }
 </style>

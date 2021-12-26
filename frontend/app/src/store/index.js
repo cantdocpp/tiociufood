@@ -16,6 +16,11 @@ export default createStore({
       state.accessToken = accessToken
       localStorage.setItem("access_token", JSON.stringify(accessToken))
       state.loggedIn =  true
+    },
+    DELETE_USER_DATA(state) {
+      state.accessToken = null
+      state.userData = null
+      state.loggedIn = false
     }
   },
   actions: {
@@ -36,6 +41,9 @@ export default createStore({
           }
         })
     },
+    logout({ commit }) {
+      commit('DELETE_USER_DATA')
+    }
   },
   modules: {},
   getters: {
