@@ -7,29 +7,6 @@
             <Spacer :margin-top="20" />
             <Box v-if="step === 1">
                 <Stack space="medium">
-                    <Box>
-                        <Title :size="20">
-                            Rate this restaurant
-                        </Title>
-                        <Spacer :margin-top="10" />
-                        <ReviewStar @review="restaurantReview" />
-                    </Box>
-                    <Box>
-                        <Title :size="20">
-                            Say something about this restaurant
-                        </Title>
-                        <Spacer :margin-top="10" />
-                        <Textfield v-model="form.restaurant.review"></Textfield>
-                    </Box>
-                    <Flex justify="flex-end">
-                        <Button @click="next">
-                            Next
-                        </Button>
-                    </Flex>
-                </Stack>
-            </Box>
-            <Box v-if="step === 2">
-                <Stack space="medium">
                     <Title :size="20">
                         What food did you buy ?
                     </Title>
@@ -39,6 +16,29 @@
                             <label :for="food"> {{ food }} </label>
                         </div>
                     </Grid>
+                    <Flex justify="flex-end">
+                        <Button @click="next">
+                            Next
+                        </Button>
+                    </Flex>
+                </Stack>
+            </Box>
+            <Box v-if="step === 2">
+                <Stack space="medium">
+                    <Box v-if="eatenFood.length > 0">
+                        <Box v-for="(food, index) in form.foods" :key="index">
+                            <Stack>
+                                <Title :size="20">
+                                    {{ food.foodName }} food review
+                                </Title>
+                                <ReviewStar @review="rateFood(index, $event)" />
+                                <Textfield v-model="form.foods[index].review"></Textfield>
+                            </Stack>
+                        </Box>
+                    </Box>
+                    <Box v-else>
+                        You haven't choose any food on the first step
+                    </Box>
                     <Flex justify="flex-end">
                         <Button type="secondary" @click="back">
                             Back
@@ -52,14 +52,19 @@
             </Box>
             <Box v-if="step === 3">
                 <Stack space="medium">
-                    <Box v-for="(food, index) in form.foods" :key="index">
-                        <Stack>
-                            <Title :size="20">
-                                {{ food.foodName }} food review
-                            </Title>
-                            <ReviewStar @review="rateFood(index, $event)" />
-                            <Textfield v-model="form.foods[index].review"></Textfield>
-                        </Stack>
+                    <Box>
+                        <Title :size="20">
+                            Rate this restaurant
+                        </Title>
+                        <Spacer :margin-top="10" />
+                        <ReviewStar @review="restaurantReview" />
+                    </Box>
+                    <Box>
+                        <Title :size="20">
+                            Say something about this restaurant
+                        </Title>
+                        <Spacer :margin-top="10" />
+                        <Textfield v-model="form.restaurant.review"></Textfield>
                     </Box>
                     <Flex justify="flex-end">
                         <Button type="secondary" @click="back">

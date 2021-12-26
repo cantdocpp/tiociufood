@@ -5,6 +5,11 @@
             @close="closeModal"
             :foods="foods"
         />
+        <ImageModal 
+            v-if="isMenuOpen"
+            @close="closeImageModal"
+            :images="getAllMenu"
+        />
         <Container v-if="!isLoading">
             <Box>
                 <div class="restaurant__image__wrapper">
@@ -52,6 +57,24 @@
             <Spacer :margin-top="30" />
             <Box>
                 <Title :size="25">
+                    Menu
+                </Title>
+                <Spacer :margin-top="10" />
+                <div class="restaurant__menu__wrapper" @click="openImageModal">
+                    <img :src="getRestaurantMenuCover" class="restaurant__menu__cover" alt="restaurant menu">
+                </div>
+                <Box>
+                    <Spacer :margin-top="5" />
+                    <Box>
+                        <Text :size="17">
+                            {{ getMenuLength }} Pages
+                        </Text>
+                    </Box>
+                </Box>
+            </Box>
+            <Spacer :margin-top="30" />
+            <Box>
+                <Title :size="25">
                     User Review
                 </Title>
                 <Review :restaurant-name="restaurant.restaurantName" />
@@ -71,6 +94,7 @@ import Title from '@/components/Title'
 import Text from '@/components/Text'
 import Button from '@/components/Button'
 import Modal from '@/components/Modal'
+import ImageModal from '@/components/ImageModal'
 
 import Container from '@/layouts/Container'
 import Spacer from '@/layouts/Spacer'
@@ -84,6 +108,7 @@ export default {
         return {
             isLoading: true,
             isReview: false,
+            isMenuOpen: false,
             restaurant: {},
             foods: []
         }
@@ -98,6 +123,20 @@ export default {
                 photos.push(this.restaurant.restaurantPhotos[i])
             }
             return photos
+        },
+        getRestaurantMenuCover() {
+            const menus = this.restaurant.restaurantMenu.split(',')
+            return menus[0]
+        },
+        getMenuLength() {
+            const menus = this.restaurant.restaurantMenu.split(',')
+
+            return menus.length
+        },
+        getAllMenu() {
+            const menus = this.restaurant.restaurantMenu.split(',')
+
+            return menus
         }
     },
     methods: {
@@ -107,6 +146,12 @@ export default {
         closeModal() {
             this.isReview = false
             this.$router.go()
+        },
+        closeImageModal() {
+            this.isMenuOpen = false
+        },
+        openImageModal() {
+            this.isMenuOpen = true
         }
     },
     async created() {
@@ -124,6 +169,7 @@ export default {
         Title,
         Text,
         Button,
+        ImageModal,
         Modal,
         Container,
         Spacer,
@@ -201,5 +247,18 @@ export default {
     .restaurant__image__add__logo {
         display: flex;
         align-items: center;
+    }
+
+    .restaurant__menu__wrapper {
+        cursor: pointer;
+        width: 200px;
+        height: 200px;
+    }
+
+    .restaurant__menu__cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 4px;
     }
 </style>

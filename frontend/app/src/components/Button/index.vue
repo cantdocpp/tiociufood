@@ -1,6 +1,11 @@
 <template>
     <button class="button" :class="[buttonTypeClass, buttonWidthClass]">
-        <slot></slot>
+        <span class="button__text" :class="{ 'button__text--loading': submit }">
+            <slot></slot>
+        </span>
+        <div class="button__loading__wrapper" v-if="submit">
+            <span class="button--loading"></span>
+        </div>
     </button>
 </template>
 
@@ -12,6 +17,10 @@ export default {
             default: 'primary'
         },
         maxWidth: {
+            type: Boolean,
+            default: false
+        },
+        submit: {
             type: Boolean,
             default: false
         }
@@ -29,6 +38,7 @@ export default {
 
 <style scoped>
     .button {
+        position: relative;
         display: block;
         box-sizing: border-box;
         padding: 7px 10px;
@@ -36,6 +46,11 @@ export default {
         border-radius: 4px;
         font-weight: 600;
         cursor: pointer;
+    }
+
+    .button__text--loading {
+        visibility: hidden;
+        opacity: 0;   
     }
 
     .button--max {
@@ -56,5 +71,31 @@ export default {
         color: rgb(239, 79, 95);
         background: #fff;
         border: 1px solid rgb(239, 79, 95);
+    }
+
+    .button--loading::after {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border: 4px solid transparent;
+        border-top-color: #ffffff;
+        border-radius: 50%;
+        animation: button-loading-spinner 1s ease infinite;
+    }
+
+    @keyframes button-loading-spinner {
+        from {
+            transform: rotate(0turn);
+        }
+
+        to {
+            transform: rotate(1turn);
+        }
     }
 </style>
