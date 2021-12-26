@@ -38,6 +38,7 @@ export default {
 
 <style scoped>
     .button {
+        font-size: 18px;
         position: relative;
         display: block;
         box-sizing: border-box;

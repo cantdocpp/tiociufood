@@ -2,7 +2,8 @@
     <div class="home" :style="{ backgroundImage: 'url(' + require('@/assets/home.jpg') + ')' }">>
         <div class="home__shadow"></div>
         <div class="home__content">
-            <h1 class="home__title">Search for restaurant near you</h1>
+            <h1 class="home__user__welcome" v-if="userLoggedIn">Welcome, {{ getUsername }}</h1>
+            <h1 class="home__title">Search for restaurant near you <br> (*non-halal)</h1>
             <div class="home__input__box">
                 <div class="home__input__wrapper">
                     <input type="text" placeholder="restaurant name" class="home__input" v-model="userSearch">
@@ -21,6 +22,18 @@ export default {
     data() {
         return {
             userSearch: ''
+        }
+    },
+    computed: {
+        userLoggedIn() {
+            const userisLoggedIn = this.$store.getters.loggedIn
+
+            return userisLoggedIn
+        },
+        getUsername() {
+            const userState = this.$store.getters.userStateData
+
+            return userState.username
         }
     },
     methods: {
@@ -65,14 +78,15 @@ export default {
     }
 
     .home__title {
-        font-size: 45px;
+        margin-top: 30px;
+        font-size: 60px;
     }
 
     .home__input {
         box-sizing: border-box;
-        width: 500px;
+        width: 650px;
         outline: none;
-        padding: 10px;
+        padding: 12px;
         border-radius: 5px;
         border: none;
     }
@@ -94,10 +108,15 @@ export default {
     }
 
     .home__footer__text {
-        font-size: 18px;
+        font-size: 25px;
     }
     
     .home__link {
+        font-size: 25px;
         color: rgb(239, 79, 95);
+    }
+
+    .home__user__welcome {
+        font-size: 50px;
     }
 </style>

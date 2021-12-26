@@ -3,19 +3,19 @@
         <Container>
             <Flex justify="space-between" align="center">
                 <NavLink to="/">
-                    <Text :size="32" weight="bold">
+                    <Text :size="40" weight="bold">
                         Tiociufood
                     </Text>
                 </NavLink>
                 <Flex align="center">
                     <NavLink to="/discover">
-                        <Text :size="18">
+                        <Text :size="22">
                             Discover
                         </Text>
                     </NavLink>
                     <Spacer :margin-left="20" />
                     <NavLink to="/about-us">
-                        <Text :size="18">
+                        <Text :size="22">
                             About Us
                         </Text>
                     </NavLink>
@@ -23,7 +23,7 @@
                     <LoggedInOnly>
                         <Flex>
                             <NavLink to="/recommendation">
-                                <Text :size="18">
+                                <Text :size="22">
                                     Recommendation
                                 </Text>
                             </NavLink>
@@ -35,13 +35,13 @@
                     <NotLoggedIn>
                         <Flex>
                             <NavLink to="/login">
-                                <Text :size="18">
+                                <Text :size="22">
                                     Login
                                 </Text>
                             </NavLink>
                             <Spacer :margin-left="20" />
                             <NavLink to="/register">
-                                <Text :size="18">
+                                <Text :size="22">
                                     Register
                                 </Text>
                             </NavLink>
@@ -107,7 +107,7 @@ export default {
     }
 
     .nav__logout {
-        font-size: 18px;
+        font-size: 22px;
         cursor: pointer;
         user-select: none;
     }

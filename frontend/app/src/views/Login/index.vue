@@ -26,7 +26,7 @@
                         :error="error.password"
                     />
                 </Label>
-                <Button max-width @click="submit">
+                <Button max-width @click="submit" :submit="isSubmit">
                     Sign In
                 </Button>
             </Stack>
@@ -64,7 +64,8 @@ export default {
             error: {
                 ...errorObj
             },
-            authError: false
+            authError: false,
+            isSubmit: false
         }
     },
     methods: {
@@ -80,13 +81,14 @@ export default {
             return this.error.email || this.error.password
         },
         async submit() {
+            this.isSubmit = true
             this.error = {
                 ...errorObj
             }
             const isError = this.checkForm()
             
             if (isError) return
-
+            
             this.$store
                 .dispatch('login', {
                     email: this.form.email,
@@ -94,6 +96,7 @@ export default {
                 })
                 .then(res => {
                     if (res.status === 401) {
+                        this.isSubmit = false
                         this.authError = true
                         return
                     }

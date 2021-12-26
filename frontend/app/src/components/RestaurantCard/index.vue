@@ -61,7 +61,7 @@ export default {
         text-transform: capitalize;
         white-space: nowrap;
         font-weight: 700;
-        font-size: 15px;
+        font-size: 20px;
     }
 
     .restaurant-card__rating__wrapper {

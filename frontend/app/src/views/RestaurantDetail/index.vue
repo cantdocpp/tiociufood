@@ -11,6 +11,7 @@
             :images="getAllMenu"
         />
         <Container v-if="!isLoading">
+            <Spacer :margin-top="30" />
             <Box>
                 <div class="restaurant__image__wrapper">
                     <div class="restaurant__main__image">
@@ -33,20 +34,20 @@
                     </div>
                 </div>
                 <Stack>
-                    <Title :size="35">
+                    <Title :size="40">
                         {{ restaurant.restaurantName }}
                     </Title>
                     <Box>
-                        <Text :size="18">
+                        <Text :size="22">
                             {{ restaurant.restaurantAddress }}
                         </Text>
                     </Box>
                     <Box>
-                        <Text>
+                        <Text :size="18">
                             {{ restaurant.restaurantSchedule }}
                         </Text>
                     </Box>
-                    <Spacer :margin-top="10" />
+                    <Spacer :margin-top="20" />
                     <Box>
                         <Button @click="openModal">
                             Add Review
@@ -56,7 +57,7 @@
             </Box>
             <Spacer :margin-top="30" />
             <Box>
-                <Title :size="25">
+                <Title :size="35">
                     Menu
                 </Title>
                 <Spacer :margin-top="10" />
@@ -74,7 +75,7 @@
             </Box>
             <Spacer :margin-top="30" />
             <Box>
-                <Title :size="25">
+                <Title :size="35">
                     User Review
                 </Title>
                 <Review :restaurant-name="restaurant.restaurantName" />

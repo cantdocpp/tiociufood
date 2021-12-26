@@ -104,7 +104,7 @@
                         Back
                     </Button>
                     <Spacer :margin-left="10" />
-                    <Button @click="submit">
+                    <Button @click="submit" :submit="isSubmit">
                         Submit
                     </Button>
                 </Flex>
@@ -151,7 +151,8 @@ export default {
             eatenFood: [],
             uploadImage: [],
             uploadedImage: [],
-            uploadImageLinks: []
+            uploadImageLinks: [],
+            isSubmit: false
         }
     },
     methods: {
@@ -220,11 +221,13 @@ export default {
             console.log(res)
         },
         async submit() {
+            this.isSubmit = true
             if (this.uploadImage) {
                 await this.submitImage()
             }
             await this.submitRestaurant()
             await this.submitFood()
+            this.isSubmit = false
 
             this.$emit('close')
         },

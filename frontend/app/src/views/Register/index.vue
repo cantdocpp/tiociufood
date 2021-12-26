@@ -34,7 +34,7 @@
                         :error="error.password"
                     />
                 </Label>
-                <Button max-width @click="submit">
+                <Button max-width @click="submit" :submit="isSubmit">
                     Sign Up
                 </Button>
             </Stack>
@@ -75,7 +75,8 @@ export default {
             error: {
                 ...errorObj
             },
-            success: false
+            success: false,
+            isSubmit: false
         }
     },
     methods: {
@@ -95,6 +96,7 @@ export default {
             return this.error.email || this.error.password || this.error.username
         },
         async submit() {
+            this.isSubmit = true
             this.error = {
                 ...errorObj
             }
@@ -105,6 +107,7 @@ export default {
             await register_user(this.form)
 
             this.success = true
+            this.isSubmit = false
 
             this.form = {
                 ...formObj
