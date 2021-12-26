@@ -47,6 +47,15 @@
                 <Label name="restaurant image">
                     <FileInput @change="handleUpload" />
                 </Label>
+                <Label name="restaurant menu">
+                    <input 
+                        type="file" 
+                        class="input" 
+                        accept="image/png, image/jpeg"
+                        multiple="multiple"
+                        @change="handleMenuUpload($event.target.files)"
+                    >
+                </Label>
                 <Spacer :y="20" />
                 <Box>
                     <Flex justify="flex-end">
@@ -74,6 +83,7 @@ import FileInput from '@/components/FileInput'
 import Button from '@/components/Button'
 
 import { add_restaurant } from '@/api/restaurant'
+import { upload_images } from '@/api/uploader'
 import { get_food } from '@/api/food'
 
 export default {
@@ -85,7 +95,8 @@ export default {
                 restaurantImage: [],
                 restaurantAvgCost: '',
                 restaurantSchedule: '',
-                restaurantFood: []
+                restaurantFood: [],
+                restaurantMenu: []
             },
             foods: []
         }
@@ -94,7 +105,26 @@ export default {
         handleUpload(event) {
             this.form.restaurantImage = event.target.files[0]
         },
+        handleMenuUpload(files) {
+            this.form.restaurantMenu = files
+        },
+        async uploadMenu() {
+            const formData = new FormData()
+            for (let i = 0; i < this.form.restaurantMenu.length; i++) {
+                formData.append('files', this.form.restaurantMenu[i])
+            }
+            
+            try {
+                const res = await upload_images(formData)
+                const images = res.data.images
+
+                return images
+            } catch(err) {
+                console.log(err)
+            }
+        },
         async submit() {
+            const menus = await this.uploadMenu()
             const formData = new FormData()
             formData.append('file', this.form.restaurantImage)
             formData.append('restaurantAddress', this.form.restaurantAddress)
@@ -102,6 +132,7 @@ export default {
             formData.append('restaurantAvgCost', this.form.restaurantAvgCost)
             formData.append('restaurantSchedule', this.form.restaurantSchedule)
             formData.append('restaurantFood', this.form.restaurantFood)
+            formData.append('restaurantMenu', menus)
 
             try {
                 const res = await add_restaurant(formData)

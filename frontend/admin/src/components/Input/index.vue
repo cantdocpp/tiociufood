@@ -2,7 +2,6 @@
     <input 
         :type="type"
         :placeholder="placeholder"
-        :value="value"
         class="input"
         @input="$emit('update:modelValue', $event.target.value)"
     >
@@ -17,9 +16,6 @@ export default {
         },
         placeholder: {
             required: true
-        },
-        value: {
-            required: false
         }
     }
 }
