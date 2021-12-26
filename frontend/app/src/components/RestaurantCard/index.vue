@@ -9,7 +9,7 @@
         </div>
         <div class="restaurant-card__content">
             <h1 class="restaurant-card__title"> {{ restaurantData.restaurantName }} </h1>
-            <div class="restaurant-card__rating__wrapper">
+            <!-- <div class="restaurant-card__rating__wrapper">
                 <div class="restaurant-card__rating">
                     4.7
                     <i class="restaurant-card__icon">
@@ -19,7 +19,7 @@
                 <span class="restaurant-card__rating__text">
                     RATED
                 </span>
-            </div>
+            </div> -->
             <div class="restaurant-card__address">
                 {{ restaurantData.restaurantAddress }}  
             </div>
