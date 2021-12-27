@@ -17,11 +17,11 @@
                     </Flex>
                 </Box>
                 <Box v-if="Object.keys(result).length > 0">
-                    <Header>
+                    <Header :level="2">
                         Hasil test rekomendasi
                     </Header>
                     <ul>
-                        <li v-for="(recommendation, index) in result.recommendation" :key="index">
+                        <li v-for="(recommendation, index) in result.recommendation" :key="index" class="list">
                             {{ recommendation.foodName }} => {{ recommendation.foodRate }}
                         </li>
                     </ul>
@@ -131,5 +131,9 @@ export default {
     .grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
+    }
+
+    .list {
+        font-size: 25px;
     }
 </style>

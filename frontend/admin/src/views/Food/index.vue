@@ -98,10 +98,12 @@ export default {
     }
 
     .th {
+        font-size: 25px;
         text-transform: capitalize;
     }
 
     .td {
+        font-size: 25px;
         text-align: center;
         padding: 5px 0;
         word-wrap: break-word;

@@ -14,7 +14,7 @@
                     <Button @click="openModal">Test Perhitungan Metode</Button>
                 </Flex>
                 <Box>
-                    <Header :level="2">
+                    <Header :level="3">
                         Data Latih
                     </Header>
                     <table class="table">
@@ -40,7 +40,7 @@
                 </Box>
                 <Spacer :y="20" />
                 <Box>
-                    <Header :level="2">
+                    <Header :level="3">
                         Hasil Perhitungan Metode
                     </Header>
                     <table class="table">
@@ -161,6 +161,7 @@ export default {
         box-sizing: border-box;
         text-transform: capitalize;
         padding: 0 10px;
+        font-size: 25px;
     }
 
     .td {
@@ -170,5 +171,6 @@ export default {
         word-wrap: break-word;
         padding: 10px;
         text-align: center;
+        font-size: 25px;
     }
 </style>

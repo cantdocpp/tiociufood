@@ -3,7 +3,7 @@
         <div class="modal__inner">
             <Box>
                 <Flex justify="space-between">
-                    <Header>
+                    <Header :level="2">
                         {{ headerText }}
                     </Header>
                     <Close @close="$emit('close')" />
@@ -61,7 +61,7 @@ export default {
     .modal__inner {
         box-sizing: border-box;
         padding: 15px;
-        width: 540px;
+        width: 600px;
         position: relative;
         background-color: #fff;
         box-shadow: 0 3px 5px rgb(0 0 0 / 30%);

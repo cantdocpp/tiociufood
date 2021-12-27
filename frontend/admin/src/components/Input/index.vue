@@ -25,11 +25,13 @@ export default {
     .input {
         box-sizing: border-box;
         width: 100%;
-        padding: 7px 10px;
+        padding: 10px 13px;
         outline: none;
+        font-size: 25px;
     }
 
     .input::placeholder {
         text-transform: capitalize;
+        font-size: 25px;
     }
 </style>

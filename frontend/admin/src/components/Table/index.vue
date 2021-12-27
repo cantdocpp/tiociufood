@@ -53,7 +53,8 @@ export default {
         text-transform: capitalize;
     }
 
-    .td {
+    .td, .th {
+        font-size: 25px;
         text-align: center;
         padding: 5px 0;
         word-wrap: break-word;

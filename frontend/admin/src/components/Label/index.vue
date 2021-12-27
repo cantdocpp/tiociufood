@@ -24,5 +24,6 @@ export default {
     .label__name {
         width: 100%;
         text-transform: capitalize;
+        font-size: 25px;
     }
 </style>
