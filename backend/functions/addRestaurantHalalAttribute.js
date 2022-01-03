@@ -35,7 +35,7 @@ async function addHalalAttributeToRestaurant(identifier, sk) {
             '#halal': 'halal'
         },
         ExpressionAttributeValues: {
-            ':halal': true
+            ':halal': false
         }
     }).promise()
 
