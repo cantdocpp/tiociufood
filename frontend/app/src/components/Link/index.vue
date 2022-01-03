@@ -26,7 +26,6 @@ export default {
 }
 </script>
 
-
 <style scoped>
     .link {
         color: #000;

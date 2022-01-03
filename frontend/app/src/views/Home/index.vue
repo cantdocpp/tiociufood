@@ -3,7 +3,7 @@
         <div class="home__shadow"></div>
         <div class="home__content">
             <h1 class="home__user__welcome" v-if="userLoggedIn">Welcome, {{ getUsername }}</h1>
-            <h1 class="home__title">Search for restaurant near you <br> (*non-halal)</h1>
+            <h1 class="home__title">Search for restaurant near you <br> (*halal & non-halal*)</h1>
             <div class="home__input__box">
                 <div class="home__input__wrapper">
                     <input type="text" placeholder="restaurant name" class="home__input" v-model="userSearch">

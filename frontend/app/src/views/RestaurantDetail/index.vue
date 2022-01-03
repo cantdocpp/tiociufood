@@ -38,6 +38,11 @@
                         {{ restaurant.restaurantName }}
                     </Title>
                     <Box>
+                        <Text :size="25" weight="bold">
+                            ({{ restaurant.halal ? 'halal' : 'non-halal' }})
+                        </Text>
+                    </Box>
+                    <Box>
                         <Text :size="22">
                             {{ restaurant.restaurantAddress }}
                         </Text>
@@ -104,6 +109,8 @@ import Stack from '@/layouts/Stack'
 
 import { get_restaurant_detail } from '@/api/restaurant'
 
+import { authComputed } from '@/utils/auth'
+
 export default {
     data() {
         return {
@@ -138,10 +145,14 @@ export default {
             const menus = this.restaurant.restaurantMenu.split(',')
 
             return menus
-        }
+        },
+        ...authComputed
     },
     methods: {
         openModal() {
+            if (!this.loggedIn) {
+                this.$router.push({ name: 'Login' })
+            }
             this.isReview = true
         },
         closeModal() {

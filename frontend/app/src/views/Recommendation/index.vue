@@ -4,13 +4,13 @@
             <Spacer :margin-top="20" />
             <Box v-if="!loading">
                 <Box v-if="recommendation.length > 0">
-                    <Title :size="25">
+                    <Title :size="30">
                         Recommended for you
                     </Title>
                     <Spacer :margin-top="30" />
                     <ul>
                         <li v-for="(rec, index) in getRecommendations" :key="index">
-                            <router-link :to="{ name: 'FoodDetail', params: { foodName: getFoodNameUrl(rec) } }">
+                            <router-link :to="{ name: 'FoodDetail', params: { foodName: getFoodNameUrl(rec) } }" class="recommendation__link">
                                 {{ rec }}
                             </router-link>
                         </li>
@@ -78,3 +78,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    .recommendation__link {
+        font-size: 25px;
+    }
+</style>
