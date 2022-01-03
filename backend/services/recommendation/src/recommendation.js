@@ -16,24 +16,30 @@ function dotproduct(arr) {
     return n;
  }
 
-function norm2(arr) {
-    let res1 = 0
-    let res2 = 0
+ function norm2(arr) {
+    const sqrtArr1 = []
+    const sqrtArr2 = []
+    let sqrtArr1Result = 0
+    let sqrtArr2Result = 0
     for (let i = 0; i < arr.length; i++) {
-        res1 += Math.pow(arr[i][0], 2)
+        sqrtArr1.push(Math.pow(arr[i][0], 2))
+        sqrtArr2.push(Math.pow(arr[i][1], 2))
     }
 
-    for (let j = 0; j < arr.length; j++) {
-        res2 += Math.pow(arr[j][1], 2)
+    for (let j = 0; j < sqrtArr1.length; j++) {
+        sqrtArr1Result += sqrtArr1[j]
+        sqrtArr2Result += sqrtArr2[j]
     }
 
-    return Math.sqrt(res1) * Math.sqrt(res2)
+    return Math.sqrt(sqrtArr1Result) * Math.sqrt(sqrtArr2Result)
 }
 
 function cosineSimilarity(arr) {
     let dotProductResult = dotproduct(arr)
     let normResult = norm2(arr)
-    return dotProductResult / normResult
+    const res = dotProductResult / normResult
+    
+    return res
 }
 
 function getFoodIndex(foodList, foodName) {
@@ -59,13 +65,19 @@ function weightedSum(foodName, foodIndex, userObj, similarityObj) {
 
     let top = 0
     for (let d = 0; d < userOtherFoodReview.length; d++) {
+        // console.log(foodName)
+        // console.log(userOtherFoodReview[d], userOtherFoodSimilarity[d], '++++++++++++')
         top += userOtherFoodReview[d] * userOtherFoodSimilarity[d]
     }
 
     let bot = 0
     for (let e = 0; e < userOtherFoodReview.length; e++) {
+        // console.log(foodName)
+        // console.log(userOtherFoodSimilarity[e], 'nei')
         bot += userOtherFoodSimilarity[e]
     }
+
+    // console.log(top, 'top')
 
     return top / bot
 }
