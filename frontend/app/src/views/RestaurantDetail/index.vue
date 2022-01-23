@@ -10,6 +10,10 @@
             @close="closeImageModal"
             :images="getAllMenu"
         />
+        <AddPhotosModal 
+            v-if="isAddPhotosOpen"
+            @close="closeAddPhotosModal"
+        />
         <Container v-if="!isLoading">
             <Spacer :margin-top="30" />
             <Box>
@@ -21,7 +25,7 @@
                         <div class="restaurant__image__other" v-for="(photo, index) in getRestaurantPhotos" :key="index">
                             <img :src="photo" alt="restaurant photo" class="restaurant__image">
                         </div>
-                        <section class="restaurant__image__add">
+                        <section class="restaurant__image__add" @click="isAddPhotosOpen = true">
                             <div class="restaurant__image__box" style="background-image: url(https://b.zmtcdn.com/data/zomaland/a6750d1975cd3139cb91535088efb0c71578913426.jpeg?fit=around|69.75:68.25&crop=69.75:68.25;*,*)">
                                 <div class="restaurant__image__add__absolute">
                                     <div class="restaurant__image__add__background">
@@ -95,6 +99,7 @@
 <script>
 import ReviewModal from './components/ReviewModal'
 import Review from './components/Review'
+import AddPhotosModal from './components/AddPhotosModal.vue'
 
 import Title from '@/components/Title'
 import Text from '@/components/Text'
@@ -117,6 +122,7 @@ export default {
             isLoading: true,
             isReview: false,
             isMenuOpen: false,
+            isAddPhotosOpen: false,
             restaurant: {},
             foods: []
         }
@@ -164,6 +170,9 @@ export default {
         },
         openImageModal() {
             this.isMenuOpen = true
+        },
+        closeAddPhotosModal() {
+            this.isAddPhotosOpen = false
         }
     },
     async created() {
@@ -178,6 +187,7 @@ export default {
     components: {
         ReviewModal,
         Review,
+        AddPhotosModal,
         Title,
         Text,
         Button,

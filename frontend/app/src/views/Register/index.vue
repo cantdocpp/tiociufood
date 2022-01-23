@@ -34,6 +34,15 @@
                         :error="error.password"
                     />
                 </Label>
+                <Label name="Confirm Your Password">
+                    <Input 
+                        type="password" 
+                        placeholder="Password Confirmation"
+                        :value="form.passwordConfirm"
+                        v-model="form.passwordConfirm"
+                        :error="error.passwordConfirm"
+                    />
+                </Label>
                 <Button max-width @click="submit" :submit="isSubmit">
                     Sign Up
                 </Button>
@@ -56,13 +65,15 @@ import { register_user } from '@/api/user'
 const errorObj = {
     email: false,
     password: false,
-    username: false
+    username: false,
+    passwordConfirm: false
 }
 
 const formObj = {
     email: '',
     password: '',
-    username: ''
+    username: '',
+    passwordConfirm: ''
 }
 
 export default {
@@ -70,7 +81,8 @@ export default {
         return {
             form: {
                 email: '',
-                password: ''
+                password: '',
+                passwordConfirm: ''
             },
             error: {
                 ...errorObj
@@ -108,6 +120,8 @@ export default {
 
             this.success = true
             this.isSubmit = false
+
+            this.$router.push({ name: 'Home' })
 
             this.form = {
                 ...formObj
