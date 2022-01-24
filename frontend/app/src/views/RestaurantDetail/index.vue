@@ -159,12 +159,6 @@ export default {
 
             return menus
         },
-        getGoogleMapLink() {
-            const latlang = this.restaurant.latlang
-            const latlangSplit = latlang.split(', ')
-            console.log(latlangSplit)
-            return `https://www.google.com/maps/search/?api=1&query=${latlangSplit[0]}%2C${latlangSplit[1]}`
-        },
         ...authComputed
     },
     methods: {
