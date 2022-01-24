@@ -85,6 +85,13 @@
             <Spacer :margin-top="30" />
             <Box>
                 <Title :size="35">
+                    Link Google Map
+                </Title>
+                <a :href="getGoogleMapLink" target="_blank" class="google-map">Google Map Link</a>
+            </Box>
+            <Spacer :margin-top="30" />
+            <Box>
+                <Title :size="35">
                     User Review
                 </Title>
                 <Review :restaurant-name="restaurant.restaurantName" />
@@ -124,7 +131,7 @@ export default {
             isMenuOpen: false,
             isAddPhotosOpen: false,
             restaurant: {},
-            foods: []
+            foods: [],
         }
     },
     computed: {
@@ -152,6 +159,12 @@ export default {
 
             return menus
         },
+        getGoogleMapLink() {
+            const latlang = this.restaurant.latlang
+            const latlangSplit = latlang.split(', ')
+            console.log(latlangSplit)
+            return `https://www.google.com/maps/search/?api=1&query=${latlangSplit[0]}%2C${latlangSplit[1]}`
+        },
         ...authComputed
     },
     methods: {
@@ -173,7 +186,7 @@ export default {
         },
         closeAddPhotosModal() {
             this.isAddPhotosOpen = false
-        }
+        },
     },
     async created() {
         const restaurantNameDash = this.$route.params.restaurantName
@@ -282,5 +295,9 @@ export default {
         height: 100%;
         object-fit: cover;
         border-radius: 4px;
+    }
+
+    .google-map {
+        font-size: 20px;
     }
 </style>

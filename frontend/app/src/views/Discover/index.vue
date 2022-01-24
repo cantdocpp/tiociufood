@@ -53,6 +53,7 @@ export default {
     },
     async created() {
         const restaurants = await get_restaurant()
+        console.log(restaurants)
         this.restaurants = restaurants
         this.loading = false
     },

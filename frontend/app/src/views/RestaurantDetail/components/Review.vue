@@ -125,7 +125,8 @@ export default {
                 },
             ]
 
-            const text = reviewStarValue.find(val => val.value === review)
+            const text = reviewStarValue.find(val => val.value === review) || reviewStarValue[0]
+            console.log(review, 'text')
             return text.text
         }
     },
@@ -133,6 +134,8 @@ export default {
         const res = await get_restaurant_reviews({
             restaurantName: this.restaurantName
         })
+
+        console.log(res, 'review')
 
         this.reviews = res.reviewData
         this.isLoading = false
